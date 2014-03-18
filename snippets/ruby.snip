@@ -5,10 +5,17 @@ abbr    if ... end
   end
 
 snippet case
-abbr    case ... when ... end
+abbr    case; when ...; end
   case
   when ${1:#:condition}
     ${2:TARGET}
+  end
+
+snippet case_object
+abbr    case {object}; when ...; end
+  case ${1:#:object}
+  when ${2:#:condition}
+    ${3:TARGET}
   end
 
 snippet def
@@ -233,4 +240,8 @@ abbr    gsub!
 regexp  '\.[gsub!]*$'
 options word
   gsub!(/${1:pat}/, "${2}")
+
+snippet hash
+abbr    Hash.new{|h, k| h[k] = .... }
+  Hash.new{|${1:hash}, ${2:key}| $1[$2] = ${0} }
 
