@@ -18,6 +18,18 @@ abbr    case {object}; when ...; end
     ${3:TARGET}
   end
 
+snippet class
+abbr    class ... end
+  class ${1:#:class_name}
+    ${2:TARGET}
+  end
+
+snippet module
+abbr    module ... end
+  module ${1:#:module_name}
+    ${2:TARGET}
+  end
+
 snippet def
 abbr    def ... end
   def ${1:#:method_name}
