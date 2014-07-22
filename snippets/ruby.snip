@@ -85,6 +85,10 @@ snippet edn
 abbr    => end?
   end
 
+snippet tap
+options word
+  tap{|${1:#:object}| ${2} }
+
 snippet urlencode
   # coding: utf-8
   require 'erb'
@@ -147,6 +151,10 @@ snippet map
 options word
   map{|${1:#:variable}| ${2} }
 
+snippet map!
+options word
+  map!{|${1:#:variable}| ${2} }
+
 snippet detect
 options word
   detect{|${1:#:variable}| ${2} }
@@ -158,6 +166,10 @@ options word
 snippet reject
 options word
   reject{|${1:#:variable}| ${2} }
+
+snippet reject!
+options word
+  reject!{|${1:#:variable}| ${2} }
 
 snippet sort
 options word
@@ -264,6 +276,7 @@ options word
   gsub!(/${1:pat}/, "${2}")
 
 snippet hash
+options word
 abbr    Hash.new{|h, k| h[k] = .... }
   Hash.new{|${1:hash}, ${2:key}| $1[$2] = ${0} }
 
