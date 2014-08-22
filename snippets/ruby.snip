@@ -147,6 +147,14 @@ snippet inject
 options word
   inject(${1:#:container}){|${2:#:container_variable}, ${3:#:each_variable}| ${4} }
 
+snippet all?
+options word
+  all?{|${1:#:variable}| ${2} }
+
+snippet any?
+options word
+  any?{|${1:#:variable}| ${2} }
+
 snippet map
 options word
   map{|${1:#:variable}| ${2} }
