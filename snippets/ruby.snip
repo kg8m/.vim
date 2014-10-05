@@ -1,294 +1,326 @@
 snippet if
 abbr    if ... end
-  if ${1:#:condition}
-    ${2:TARGET}
-  end
+options head
+	if ${1:#:condition}
+		${2:TARGET}
+	end
 
 snippet case
 abbr    case; when ...; end
-  case
-  when ${1:#:condition}
-    ${2:TARGET}
-  end
+options head
+	case
+	when ${1:#:condition}
+		${2:TARGET}
+	end
 
 snippet case_object
 abbr    case {object}; when ...; end
-  case ${1:#:object}
-  when ${2:#:condition}
-    ${3:TARGET}
-  end
+options head
+	case ${1:#:object}
+	when ${2:#:condition}
+		${3:TARGET}
+	end
 
 snippet while
 abbr    while ....; end
-  while ${1:#:condition}
-    ${2:TARGET}
-  end
+options head
+	while ${1:#:condition}
+		${2:TARGET}
+	end
 
 snippet class
 abbr    class ... end
-  class ${1:#:class_name}
-    ${2:TARGET}
-  end
+options head
+	class ${1:#:class_name}
+		${2:TARGET}
+	end
 
 snippet module
 abbr    module ... end
-  module ${1:#:module_name}
-    ${2:TARGET}
-  end
+options head
+	module ${1:#:module_name}
+		${2:TARGET}
+	end
+
+snippet class_inline
+abbr    class ...; ...; end
+options head
+	class ${1:#:class_name}; ${2:TARGET}; end
+
+snippet module_inline
+abbr    module ...; ...; end
+options head
+	module ${1:#:module_name}; ${2:TARGET}; end
 
 snippet def
 abbr    def ... end
-  def ${1:#:method_name}
-    ${2:TARGET}
-  end
+options head
+	def ${1:#:method_name}
+		${2:TARGET}
+	end
 
 snippet defrescue
 alias   defr
 abbr    def ... rescue ... end
-  def ${1:#:method_name}
-    ${2:TARGET}
-  rescue ${3:#:StandardError} => ${4:error}
-    ${5}
-  end
+options head
+	def ${1:#:method_name}
+		${2:TARGET}
+	rescue ${3:#:StandardError} => ${4:error}
+		${5}
+	end
 
 snippet do
 abbr    do ... end
-  do
-    ${1:TARGET}
-  end
+	do
+		${1:TARGET}
+	end
 
 snippet dovar
 abbr    do |var| ... end
-  do |${1:#:var}|
-    ${2:TARGET}
-  end
+	do |${1:#:var}|
+		${2:TARGET}
+	end
 
 snippet block
 abbr    { ... }
-  {
-    ${1:TARGET}
-  }
+	{
+		${1:TARGET}
+	}
 
 snippet blockvar
 abbr    {|var| ... }
-  {|${1:#:var}|
-    ${2:TARGET}
-  }
+	{|${1:#:var}|
+		${2:TARGET}
+	}
 
 snippet fileopen
 abbr    File.open(filename) do ... end
-  File.open(${1:#:filename}, "${2:#:mode}") do |${3:io}|
-    ${0:TARGET}
-  end
+	File.open(${1:#:filename}, "${2:#:mode}") do |${3:io}|
+		${0:TARGET}
+	end
 
 snippet edn
 abbr    => end?
-  end
+	end
 
 snippet tap
 options word
-  tap{|${1:#:object}| ${2} }
+	tap{|${1:#:object}| ${2} }
 
 snippet urlencode
-  # coding: utf-8
-  require 'erb'
-  puts ERB::Util.url_encode '${1}'
+	# coding: utf-8
+	require 'erb'
+	puts ERB::Util.url_encode '${1}'
 
 snippet encoding
 alias   enc
-  # coding: utf-8
-  ${0}
+	# coding: utf-8
+	${0}
 
 snippet each
 options word
-  each{|${1:#:variable}| ${2} }
+	each{|${1:#:variable}| ${2} }
 
 snippet each_do
 options word
-  each do |${1:#:variable}|
-    ${2}
-  end
+	each do |${1:#:variable}|
+		${2}
+	end
 
 snippet each_byte
 options word
-  each_byte{|${1:#:variable}| ${2} }
+	each_byte{|${1:#:variable}| ${2} }
 
 snippet each_char
 options word
-  each_char{|${1:#:variable}| ${2} }
+	each_char{|${1:#:variable}| ${2} }
 
 snippet each_index
 options word
-  each_index{|${1:#:variable}| ${2} }
+	each_index{|${1:#:variable}| ${2} }
 
 snippet each_key
 options word
-  each_key{|${1:#:variable}| ${2} }
+	each_key{|${1:#:variable}| ${2} }
 
 snippet each_line
 options word
-  each_line{|${1:#:variable}| ${2} }
+	each_line{|${1:#:variable}| ${2} }
 
 snippet each_with_index
 options word
-  each_with_index{|${1:#:variable}, ${2:#:index_variable}| ${3} }
+	each_with_index{|${1:#:variable}, ${2:#:index_variable}| ${3} }
 
 snippet each_with_index_do
 options word
-  each_with_index do |${1:#:variable}, ${2:#:index_variable}|
-    ${3}
-  end
+	each_with_index do |${1:#:variable}, ${2:#:index_variable}|
+		${3}
+	end
 
 snippet each_with_object
 options word
-  each_with_object(${1:#:container}){|${2:#:each_variable}, ${3:#:container_variable}| ${4} }
+	each_with_object(${1:#:container}){|${2:#:each_variable}, ${3:#:container_variable}| ${4} }
 
 snippet inject
 options word
-  inject(${1:#:container}){|${2:#:container_variable}, ${3:#:each_variable}| ${4} }
+	inject(${1:#:container}){|${2:#:container_variable}, ${3:#:each_variable}| ${4} }
 
 snippet all?
 options word
-  all?{|${1:#:variable}| ${2} }
+	all?{|${1:#:variable}| ${2} }
 
 snippet any?
 options word
-  any?{|${1:#:variable}| ${2} }
+	any?{|${1:#:variable}| ${2} }
 
 snippet map
 options word
-  map{|${1:#:variable}| ${2} }
+	map{|${1:#:variable}| ${2} }
 
 snippet map!
 options word
-  map!{|${1:#:variable}| ${2} }
+	map!{|${1:#:variable}| ${2} }
 
 snippet detect
 options word
-  detect{|${1:#:variable}| ${2} }
+	detect{|${1:#:variable}| ${2} }
 
 snippet select
 options word
-  select{|${1:#:variable}| ${2} }
+	select{|${1:#:variable}| ${2} }
 
 snippet reject
 options word
-  reject{|${1:#:variable}| ${2} }
+	reject{|${1:#:variable}| ${2} }
 
 snippet reject!
 options word
-  reject!{|${1:#:variable}| ${2} }
+	reject!{|${1:#:variable}| ${2} }
 
 snippet sort
 options word
-  sort{|${1:#:variable}| ${2} }
+	sort{|${1:#:variable}| ${2} }
 
 snippet sort_by
 options word
-  sort_by{|${1:#:variable}| ${2} }
+	sort_by{|${1:#:variable}| ${2} }
 
 snippet group_by
 options word
-  group_by{|${1:#:variable}| ${2} }
+	group_by{|${1:#:variable}| ${2} }
 
 snippet index_by
 options word
-  index_by{|${1:#:variable}| ${2} }
+	index_by{|${1:#:variable}| ${2} }
 
 snippet partition
 options word
-  partition{|${1:#:variable}| ${2} }
+	partition{|${1:#:variable}| ${2} }
 
 snippet lambda
 options word
-  lambda{|${1:#:args}| ${2} }
+	lambda{|${1:#:args}| ${2} }
 
 snippet ->
 abbr    ->
 options word
-  -> (${1:#:args}){ ${2} }
+	->(${1:#:args}){ ${2} }
 
 snippet proc
 options word
-  Proc.new{ ${1} }
+	proc{ ${1} }
 
 snippet procv
 options word
-  Proc.new{|${1:#:args}| ${2} }
+	proc{|${1:#:args}| ${2} }
+
+snippet procnew
+options word
+	Proc.new{ ${1} }
+
+snippet procnewv
+options word
+	Proc.new{|${1:#:args}| ${2} }
 
 snippet main
 options head
-  if __FILE__ == \$0
-    ${0:TARGET}
-  end
+	if __FILE__ == \$0
+		${0:TARGET}
+	end
 
 # This idiom is only for legacy ruby such as 1.9.3
 snippet filedir-legacy-compatibility
 alias __dir__
 abbr File.dirname(...)
-  File.dirname(File.expand_path(__FILE__))
+	File.dirname(File.expand_path(__FILE__))
 
 snippet glob
 options head
-  Dir.glob(${1:"**/*"}) do |fname|
-    ${0:TARGET}
-  end
+	Dir.glob(${1:"**/*"}) do |fname|
+		${0:TARGET}
+	end
 
 snippet concern
 abbr    extend ActiveSupport::Concern; module ClassMethods...
 options word
-  extend ActiveSupport::Concern
+	extend ActiveSupport::Concern
 
-  module ClassMethods
-    ${1}
-  end
+	module ClassMethods
+		${1}
+	end
 
-  included do
-  end
+	included do
+	end
 
 snippet alias
 abbr    alias :new_name :old_name
 options word
-  alias :${1:new_name} :${2:old_name}
+	alias :${1:new_name} :${2:old_name}
 
 snippet method_missing
 abbr    method_missing
 regexp  'def [method_missing]*$'
 options word
-  method_missing(method, *args, &block)
-    if method.to_s =~ ${1:regexp}
-      ${2}
-    else
-      super
-    end
-  end
+	method_missing(method, *args, &block)
+		if method.to_s =~ ${1:regexp}
+			${2}
+		else
+			super
+		end
+	end
 
 snippet sub
 abbr    sub
 regexp  '\.[sub]*$'
 options word
-  sub(/${1:pat}/, "${2}")
+	sub(/${1:pat}/, "${2}")
 
 snippet sub!
 abbr    sub!
 regexp  '\.[sub!]*$'
 options word
-  sub!(/${1:pat}/, "${2}")
+	sub!(/${1:pat}/, "${2}")
 
 snippet gsub
 abbr    gsub
 regexp  '\.[gsub]*$'
 options word
-  gsub(/${1:pat}/, "${2}")
+	gsub(/${1:pat}/, "${2}")
 
 snippet gsub!
 abbr    gsub!
 regexp  '\.[gsub!]*$'
 options word
-  gsub!(/${1:pat}/, "${2}")
+	gsub!(/${1:pat}/, "${2}")
 
 snippet hash
-options word
 abbr    Hash.new{|h, k| h[k] = .... }
-  Hash.new{|${1:hash}, ${2:key}| $1[$2] = ${0} }
+alias   Hash
+options word
+	Hash.new{|${1:hash}, ${2:key}| $1[$2] = ${0} }
 
+snippet orderedhash
+abbr    ActiveSupport::OrderedHash[...]
+alias   ActiveSupport::OrderedHash
+options word
+	ActiveSupport::OrderedHash[${1}]
