@@ -221,6 +221,10 @@ snippet lambda
 options word
 	lambda{|${1:#:args}| ${2} }
 
+snippet lambda_without_arg
+options word
+	lambda{ ${1} }
+
 snippet ->
 abbr    ->
 options word
@@ -324,3 +328,47 @@ abbr    ActiveSupport::OrderedHash[...]
 alias   ActiveSupport::OrderedHash
 options word
 	ActiveSupport::OrderedHash[${1}]
+
+snippet subject
+	subject { ${0} }
+
+snippet let
+	let(:${1:object}){ ${0} }
+
+snippet let!
+	let!(:${1:object}){ ${0} }
+
+snippet it
+	it "${1:spec_name}" do
+		${0}
+	end
+
+snippet itshould
+alias   it_should
+	it { should ${0} }
+
+snippet itshouldnot
+alias   itshould_not
+alias   it_should_not
+	it { should_not ${0} }
+
+snippet describe
+	describe ${1:`substitute(substitute(vim_snippets#Filename(), '_spec$', '', ''), '\(_\|^\)\(.\)', '\u\2', 'g')`} do
+		${0}
+	end
+
+snippet cont
+alias   context
+	context "${1:message}" do
+		${0}
+	end
+
+snippet before
+	before :${1:each} do
+		${0}
+	end
+
+snippet pending
+	pending "${1}" do
+		${0}
+	end
