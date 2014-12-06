@@ -1,3 +1,23 @@
+snippet eval
+abbr    eval(string)
+	eval(<<-RUBY, __FILE__, __LINE__ + 1)
+	RUBY
+
+snippet class_eval
+abbr    class_eval(string)
+	class_eval(<<-RUBY, __FILE__, __LINE__ + 1)
+	RUBY
+
+snippet module_eval
+abbr    module_eval(string)
+	module_eval(<<-RUBY, __FILE__, __LINE__ + 1)
+	RUBY
+
+snippet instance_eval
+abbr    instance_eval(string)
+	instance_eval(<<-RUBY, __FILE__, __LINE__ + 1)
+	RUBY
+
 snippet if
 abbr    if ... end
 options head
@@ -46,6 +66,22 @@ snippet class_inline
 abbr    class ...; ...; end
 options head
 	class ${1:#:class_name}; ${2:TARGET}; end
+
+snippet classexception
+abbr    class ... < StandardError ... end
+alias   class_exception
+options head
+	class ${1:#:class_name} < StandardError
+		def initialize(message)
+			super(${2:TARGET})
+		end
+	end
+
+snippet classexception_inline
+abbr    class ... < StandardError; end
+alias   class_exception_inline
+options head
+	class ${1:#:class_name} < StandardError; end
 
 snippet module_inline
 abbr    module ...; ...; end
@@ -329,6 +365,39 @@ alias   ActiveSupport::OrderedHash
 options word
 	ActiveSupport::OrderedHash[${1}]
 
+snippet activerecord
+abbr    ActiveRecord
+alias   ActiveRecord
+options word
+	ActiveRecord
+
+snippet activerecordbase
+abbr    ActiveRecord::Base
+alias   activerecord_base
+alias   ActiveRecord::Base
+options word
+	ActiveRecord::Base
+
+snippet activerecordrecordnotfound
+abbr    ActiveRecord::RecordNotFound
+alias   activerecord_recordnotfound
+alias   ActiveRecord::RecordNotFound
+options word
+	ActiveRecord::RecordNotFound
+
+snippet activerecordrecordinvalid
+abbr    ActiveRecord::RecordInvalid
+alias   activerecord_recordinvalid
+alias   ActiveRecord::RecordInvalid
+options word
+	ActiveRecord::RecordInvalid
+
+snippet notimplementederror
+abbr    NotImplementedError
+alias   NotImplementedError
+options word
+	NotImplementedError
+
 snippet subject
 	subject { ${0} }
 
@@ -372,3 +441,8 @@ snippet pending
 	pending "${1}" do
 		${0}
 	end
+
+snippet sql_coalesce
+alias   coalesce
+alias   COALESCE
+  COALESCE
