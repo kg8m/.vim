@@ -1,20 +1,24 @@
 snippet eval
 abbr    eval(string)
+options word
 	eval(<<-RUBY, __FILE__, __LINE__ + 1)
 	RUBY
 
 snippet class_eval
 abbr    class_eval(string)
+options word
 	class_eval(<<-RUBY, __FILE__, __LINE__ + 1)
 	RUBY
 
 snippet module_eval
 abbr    module_eval(string)
+options word
 	module_eval(<<-RUBY, __FILE__, __LINE__ + 1)
 	RUBY
 
 snippet instance_eval
 abbr    instance_eval(string)
+options word
 	instance_eval(<<-RUBY, __FILE__, __LINE__ + 1)
 	RUBY
 
@@ -313,6 +317,11 @@ options word
 	end
 
 snippet alias
+abbr    alias new_name old_name
+options word
+	alias ${1:new_name} ${2:old_name}
+
+snippet alias_symbol
 abbr    alias :new_name :old_name
 options word
 	alias :${1:new_name} :${2:old_name}
