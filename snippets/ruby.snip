@@ -330,12 +330,12 @@ options word
 
 snippet alias
 abbr    alias new_name old_name
-options word
+options head
 	alias ${1:new_name} ${2:old_name}
 
 snippet alias_symbol
 abbr    alias :new_name :old_name
-options word
+options head
 	alias :${1:new_name} :${2:old_name}
 
 snippet method_missing
