@@ -4,7 +4,7 @@ if exists('MyRubyFold')
   finish
 endif
 
-let s:fold_start = '^\s*\%(class\|module\|def\)\>\|' .
+let s:fold_start = '^\s*\%(class\|module\|def\|if\|unless\|when\|else\)\>\|' .
                  \ '\<do\%(\s|.*|\)\?\s*$'
 let s:fold_end   = '^\s*end\s*$'
 let s:finish_with_end = '\<end\s*$'
