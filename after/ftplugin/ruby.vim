@@ -4,10 +4,10 @@ if exists('MyRubyFold')
   finish
 endif
 
-let s:fold_start = '^\s*\%(class\|module\|def\|if\|unless\|when\|else\)\>\|' .
+let s:fold_start = '\C^\s*\%(class\|module\|def\|if\|unless\|when\|else\)\>\|' .
                  \ '\<do\%(\s|.*|\)\?\s*$'
-let s:fold_end   = '^\s*end\s*$'
-let s:finish_with_end = '\<end\s*$'
+let s:fold_end   = '\C^\s*end\s*$'
+let s:finish_with_end = '\C\<end\s*$'
 
 function! MyRubyFold(lnum)
   let l:line = getline(a:lnum)
