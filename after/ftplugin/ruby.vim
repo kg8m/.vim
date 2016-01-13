@@ -1,3 +1,12 @@
+" Syntax-based folding gets broken depending on syntax-brokenness.
+" This `RubyFold` is based on keywords and each line indent.
+"   - keywords: `class`, `def`, `end`, and so on
+"   - other supports:
+"     - here-documents
+"     - blocks (do-end or `{ .... }`)
+"     - multi-line hash literals
+"     - multi-line array literals
+
 setlocal foldmethod=expr foldexpr=RubyFold(v:lnum)
 
 if exists('RubyFold')
