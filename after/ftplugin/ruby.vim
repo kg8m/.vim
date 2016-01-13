@@ -1,6 +1,6 @@
-setlocal foldmethod=expr foldexpr=MyRubyFold(v:lnum)
+setlocal foldmethod=expr foldexpr=RubyFold(v:lnum)
 
-if exists('MyRubyFold')
+if exists('RubyFold')
   finish
 endif
 
@@ -13,7 +13,7 @@ let s:fold_start = '\C^\s*\%(class\|module\|def\|if\|unless\|when\|else\|begin\|
 let s:fold_end   = '\C^\s*\%(end\|}\|]\)\s*$'
 let s:finish_with_end = '\C\%(\<end\|}\|]\)\s*$'
 
-function! MyRubyFold(lnum)
+function! RubyFold(lnum)
   let l:line = getline(a:lnum)
 
   if s:IsHeredocEnd(l:line)
