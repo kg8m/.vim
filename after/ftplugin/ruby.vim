@@ -36,7 +36,7 @@ function! MyRubyFold(lnum)
 endfunction
 
 function! s:IndentLevel(lnum)
-  return indent(a:lnum) / 2 + 1
+  return indent(a:lnum) / &shiftwidth + 1
 endfunction
 
 function! s:IsPrevLineInHeredoc()
