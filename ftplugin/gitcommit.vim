@@ -9,7 +9,7 @@ function! OpenGitDiffWindows() abort
 
   vnew
   silent! setlocal ft=git bufhidden=delete nobackup noswf nobuflisted wrap buftype=nofile
-  execute "normal :r!LANG=ja_JP.UTF8 git log --max-count=15\n"
+  execute "normal :r!LANG=ja_JP.UTF8 git log --max-count=100\n"
   setlocal nomodifiable
   goto 1
   redraw!
