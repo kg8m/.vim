@@ -278,9 +278,15 @@ options word
 	lambda{ ${1} }
 
 snippet ->
-abbr    ->
+abbr    ->(args){ .... }
+alias   lambda_literal_with_arg
 options word
 	->(${1:#:args}){ ${2} }
+
+snippet lambda_literal_without_arg
+abbr    ->{ .... }
+options word
+	->{ ${1} }
 
 snippet proc
 options word
