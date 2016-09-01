@@ -323,15 +323,14 @@ options head
 	end
 
 snippet concern
-abbr    extend ActiveSupport::Concern; module ClassMethods...
+abbr    extend ActiveSupport::Concern; included; class_methods; ....
 options word
 	extend ActiveSupport::Concern
 
-	module ClassMethods
-		${1}
+	included do
 	end
 
-	included do
+	class_methods do
 	end
 
 snippet activesupport_concern
