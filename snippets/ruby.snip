@@ -304,10 +304,10 @@ snippet concern
 abbr    extend ActiveSupport::Concern; included; class_methods; ....
 options word
 	extend ActiveSupport::Concern
-
+	
 	included do
 	end
-
+	
 	class_methods do
 	end
 
@@ -387,6 +387,13 @@ alias   activerecord_base
 alias   ActiveRecord::Base
 options word
 	ActiveRecord::Base
+
+snippet activerecordrelation
+abbr    ActiveRecord::Relation
+alias   activerecord_relation
+alias   ActiveRecord::Relation
+options word
+	ActiveRecord::Relation
 
 snippet activerecordrecordnotfound
 abbr    ActiveRecord::RecordNotFound
@@ -480,3 +487,84 @@ alias   coalesce
 alias   COALESCE
 options word
   COALESCE
+
+snippet select_relation
+abbr    select({columns})
+options word
+	select(${1:columns})
+
+snippet joins_relation
+abbr    joins({associations})
+options word
+	joins(${1:associations})
+
+snippet includes_relation
+abbr    includes({associations})
+options word
+	includes(${1:associations})
+
+snippet references_relation
+abbr    references({associations})
+options word
+	references(${1:associations})
+
+snippet eager_load_relation
+abbr    eager_load({associations})
+options word
+	eager_load(${1:associations})
+
+snippet preload_relation
+abbr    preload({associations})
+options word
+	preload(${1:associations})
+
+snippet where_relation
+abbr    where({conditions})
+options word
+	where(${1:conditions})
+
+snippet rewhere_relation
+abbr    rewhere({conditions})
+options word
+	rewhere(${1:conditions})
+
+snippet where_not_relation
+alias   not_relation
+abbr    where.not({conditions})
+options word
+	where.not(${1:conditions})
+
+snippet having_relation
+abbr    having({conditions})
+options word
+	having(${1:conditions})
+
+snippet group_relation
+abbr    group({columns})
+options word
+	group(${1:columns})
+
+snippet order_relation
+abbr    order({order})
+options word
+	order(${1:order})
+
+snippet reorder_relation
+abbr    reorder({order})
+options word
+	reorder(${1:order})
+
+snippet reverse_order_relation
+abbr    reverse_order
+options word
+	reverse_order
+
+snippet limit_relation
+abbr    limit({limit})
+options word
+	limit(${1:limit})
+
+snippet offset_relation
+abbr    offset({offset})
+options word
+	offset(${1:offset})
