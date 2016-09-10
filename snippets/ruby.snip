@@ -151,16 +151,6 @@ snippet tap
 options word
 	tap{|${1:#:object}| ${2} }
 
-snippet urlencode
-	# coding: utf-8
-	require 'erb'
-	puts ERB::Util.url_encode '${1}'
-
-snippet encoding
-alias   enc
-	# coding: utf-8
-	${0}
-
 snippet each
 options word
 	each{|${1:#:variable}| ${2} }
@@ -304,21 +294,9 @@ snippet procnewv
 options word
 	Proc.new{|${1:#:args}| ${2} }
 
-snippet main
-options head
-	if __FILE__ == \$0
-		${0:TARGET}
-	end
-
-# This idiom is only for legacy ruby such as 1.9.3
-snippet filedir-legacy-compatibility
-alias __dir__
-abbr File.dirname(...)
-	File.dirname(File.expand_path(__FILE__))
-
 snippet glob
 options head
-	Dir.glob(${1:"**/*"}) do |fname|
+	Dir.glob(${1:"**/*"}) do |filepath|
 		${0:TARGET}
 	end
 
