@@ -32,4 +32,4 @@ let s:p.tabline.tabsel  = [ [ s:black, s:sand ] ]
 let s:p.tabline.middle  = [ [ s:white, s:gray ] ]
 let s:p.tabline.right   = [ [ s:white, s:dark_gray ] ]
 
-let g:lightline#colorscheme#molokai#palette = lightline#colorscheme#flatten(s:p)
+let g:lightline#colorscheme#kg8m#palette = lightline#colorscheme#flatten(s:p)
