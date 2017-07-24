@@ -469,6 +469,20 @@ snippet pending
 		${0}
 	end
 
+snippet assert_difference
+abbr    assert_difference -> { .... }, .... do .... end
+options head
+	assert_difference -> { ${1} }, ${2} do
+		${3}
+	end
+
+snippet assert_no_difference
+abbr    assert_no_difference -> { .... } do .... end
+options head
+	assert_no_difference -> { ${1} } do
+		${2}
+	end
+
 snippet sql_coalesce
 alias   coalesce
 alias   COALESCE
