@@ -424,10 +424,22 @@ abbr    human_attribute_name(:attribute_name)
 options word
   human_attribute_name(:${1:attribute_name})
 
+snippet reversible
+abbr    reversible do .... end
+options head
+	reversible do |direction|
+		direction.up do
+			${1}
+		end
+
+		direction.down do
+		end
+	end
+
 snippet say_with_time
 abbr    say_with_time {message} do .... end
 options head
-	say_with_time "${1:message}" da
+	say_with_time "${1:message}" do
 		${2:#:procedure}
 	end
 
