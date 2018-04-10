@@ -1,20 +1,24 @@
 # typo  {{{
 snippet edn
 abbr    => end?
+options head
 	end
 # }}}
 
 # debug  {{{
 snippet byebug
 abbr    require 'byebug'; byebug
+options head
 	require 'byebug'; byebug
 
 snippet debugger
 abbr    require 'debugger'; debugger
+options head
 	require 'debugger'; debugger
 
 snippet pry
 abbr    require 'pry'; binding.pry
+options head
 	require 'pry'; binding.pry
 # }}}
 
@@ -107,6 +111,7 @@ options head
 
 snippet def_self
 alias   defs
+options head
 	def self.${1}
 		${0}
 	end
@@ -122,6 +127,7 @@ options head
 snippet def_test
 alias   deftest
 abbr    def test_{testcase}\n ...\n end
+options head
 	def test_${1}
 		${0}
 	end
@@ -173,12 +179,14 @@ options word
 # do ... end  {{{
 snippet do
 abbr    do ...\n end
+options word
 	do
 		${0}
 	end
 
 snippet dovar
 abbr    do |var|\n ...\n end
+options word
 	do |${1}|
 		${0}
 	end
@@ -203,6 +211,7 @@ options head
 
 snippet unless
 abbr    unless ...\n ...\n end
+options head
 	unless ${1}
 		${0}
 	end
@@ -234,6 +243,7 @@ options head
 
 snippet until
 abbr    until ...\n ...\n end
+options head
 	until ${1}
 		${0}
 	end
@@ -243,48 +253,60 @@ abbr    until ...\n ...\n end
 snippet shebang
 alias   #!
 abbr    #!/usr/bin/env ruby
+options head
 	#!/usr/bin/env ruby
 
 snippet require
+options head
 	require "${0}"
 
 snippet require_relative
+options head
 	require_relative "${0}"
 
 snippet public
 abbr    public
+options head
 	public
 
 snippet protected
 abbr    protected
+options head
 	protected
 
 snippet private
 abbr    private
+options head
 	private
 
 snippet attr_reader
 abbr    attr_reader ...
+options head
 	attr_reader :${0}
 
 snippet attr_writer
 abbr    attr_writer ...
+options head
 	attr_writer :${0}
 
 snippet attr_accessor
 abbr    attr_accessor ...
+options head
 	attr_accessor :${0}
 
 snippet def_delegator
 abbr    def_delegator {object}, :{method}
+options head
 	def_delegator :${1:#:object}, :${0:#:method}
 
 snippet def_delegator_new_name
 abbr    def_delegator {object}, :{old_method}, :{new_method}
+options head
 	def_delegator :${1:#:object}, :${2:#:old_method}, :${0:#:new_method}
 
 snippet def_delegators
 abbr    def_delegators {object}, :{method1}, {method2}, ...
+options head
 	def_delegators :${1:#:object}, :${0:#:method}
 
 snippet alias
@@ -327,6 +349,7 @@ options word
 	NotImplementedError
 
 snippet begin_rescue
+options head
 	begin
 		${0}
 	rescue ${1:#:Exception} => e
@@ -334,6 +357,7 @@ snippet begin_rescue
 
 snippet optparse
 abbr    require "optparse"\n ...\n opts.banner ...
+options word
 	require "optparse"
 	
 	options = { ${0:default: "args"} }
@@ -345,6 +369,7 @@ abbr    require "optparse"\n ...\n opts.banner ...
 snippet opts_on
 alias   opt
 abbr    opts.on(...)
+options head
 	opts.on("-${1:#:o}", "--${2:#:long-option-name}", ${3:String}, "${4:#:description}") do |value|
 		${0}
 	end
@@ -513,6 +538,7 @@ options word
 # File, Dir  {{{
 snippet fileopen
 abbr    File.open(filepath, mode) do |f|\n ...\n end
+options head
 	File.open(${1:#:filepath}, "${2:#:mode}") do |f|
 		${0}
 	end
@@ -689,6 +715,7 @@ options word
 snippet accepts_nested_attributes_for
 alias   nested_attributes_for
 abbr    accepts_nested_attributes_for ...
+options head
 	accepts_nested_attributes_for :${0}
 
 snippet i18nt_activerecord_model
@@ -744,48 +771,59 @@ options head
 # TestUnit  {{{
 snippet assert
 abbr    assert ...
+options head
 	assert ${0}
 
 snippet assert_equal
 abbr    assert_equal {expected}, {actual}
+options head
 	assert_equal ${1:#:expected}, ${0:#:actual}
 
 snippet assert_not_equal
 abbr    assert_not_equal {unexpected}, {actual}
+options head
 	assert_not_equal ${1:#:unexpected}, ${0:#:actual}
 
 snippet assert_nil
 abbr    assert_nil ...
+options head
 	assert_nil ${0}
 
 snippet assert_not_nil
 abbr    assert_not_nil ...
+options head
 	assert_not_nil ${0}
 
 snippet assert_match
 abbr    assert_match(/{expected_pattern}/, {actual_string})
+options head
 	assert_match(/${1:#:expected_pattern}/, ${0:#:actual_string})
 
 snippet assert_no_match
 abbr    assert_no_match(/{unexpected_pattern}/, {actual_string})
+options head
 	assert_no_match(/${1:#:unexpected_pattern}/, ${0:#:actual_string})
 
 snippet assert_raise
 abbr    assert_raise {Exception} { ... }
+options head
 	assert_raise ${1:#:Exception} { ${0} }
 
 snippet assert_raise_block
 abbr    assert_raise {Exception} do\n ...\n end
+options head
 	assert_raise ${1:#:Exception} do
 		${0}
 	end
 
 snippet assert_nothing_raise
 abbr    assert_nothing_raise {Exception} { ... }
+options head
 	assert_nothing_raise ${1:#:Exception} { ${0} }
 
 snippet assert_nothing_raise_block
 abbr    assert_nothing_raise {Exception} do\n ...\n end
+options head
 	assert_nothing_raise ${1:#:Exception} do
 		${0}
 	end
@@ -809,21 +847,25 @@ options head
 snippet rspec_subject
 alias   subject
 abbr    subject { ... }
+options head
 	subject { ${0} }
 
 snippet rspec_let
 alias   let
 abbr    let(...) { ... }
+options head
 	let(:${1}) { ${0} }
 
 snippet rspec_let!
 alias   let!
 abbr    let!(...) { ... }
+options head
 	let!(:${1}) { ${0} }
 
 snippet rspec_it
 alias   it
 abbr    it "{description}" do\n ...\n end
+options head
 	it "${1:#:description}" do
 		${0}
 	end
@@ -832,27 +874,32 @@ snippet rspec_it_should
 alias   it_should
 alias   itshould
 abbr    it { should ... }
+options head
 	it { should ${0} }
 
 snippet rspec_it_should_not
 alias   it_should_not
 alias   itshould_not
 abbr    it { should_not ... }
+options head
 	it { should_not ${0} }
 
 snippet rspec_it_is_expected_to
 alias   it_is_expected_to
 abbr    it { is_expected.to ... }
+options head
 	it { is_expected.to ${0} }
 
 snippet rspec_it_is_expected_not_to
 alias   it_is_expected_not_to
 abbr    it { is_expected.not_to ... }
+options head
 	it { is_expected.not_to ${0} }
 
 snippet rspec_specify
 alias   specify
 abbr    specify "{description}" do\n ...\n end
+options head
 	specify "${1:#:description}" do
 		${0}
 	end
@@ -861,19 +908,23 @@ snippet rspec_specify_should
 alias   specify_should
 alias   specifyshould
 abbr    specify { should ... }
+options head
 	specify { ${0} }
 
 snippet expect_to
 abbr    expect(...).to ...
+options head
 	expect(${1}).to ${0}
 
 snippet expect_block_to
 abbr    expect { ... }.to ...
+options head
 	expect { ${1} }.to ${0}
 
 snippet rspec_describe
 alias   describe
 abbr    describe ... do\n ...\n end
+options head
 	describe ${1:`substitute(substitute(vim_snippets#Filename(), '_spec$', '', ''), '\(_\|^\)\(.\)', '\u\2', 'g')`} do
 		${0}
 	end
@@ -881,6 +932,7 @@ abbr    describe ... do\n ...\n end
 snippet rspec_context
 alias   context
 abbr    context "{context}" do\n ...\n end
+options head
 	context "${1}" do
 		${0}
 	end
@@ -888,6 +940,7 @@ abbr    context "{context}" do\n ...\n end
 snippet rspec_before
 alias   before
 abbr    before do\n ...\n end
+options head
 	before do
 		${0}
 	end
@@ -896,6 +949,7 @@ snippet rspec_before_each
 alias   before_each
 alias   beforeeach
 abbr    before :each do\n ...\n end
+options head
 	before :each do
 		${0}
 	end
@@ -904,6 +958,7 @@ snippet rspec_before_all
 alias   before_all
 alias   beforeall
 abbr    before :all do\n ...\n end
+options head
 	before :all do
 		${0}
 	end
@@ -911,6 +966,7 @@ abbr    before :all do\n ...\n end
 snippet rspec_after
 alias   after
 abbr    after do\n ...\n end
+options head
 	after do
 		${0}
 	end
@@ -919,6 +975,7 @@ snippet rspec_after_each
 alias   after_each
 alias   aftereach
 abbr    after :each do\n ...\n end
+options head
 	after :each do
 		${0}
 	end
@@ -927,6 +984,7 @@ snippet rspec_after_all
 alias   after_all
 alias   afterall
 abbr    after :all do\n ...\n end
+options head
 	after :all do
 		${0}
 	end
@@ -934,6 +992,7 @@ abbr    after :all do\n ...\n end
 snippet rspec_pending
 alias   pending
 abbr    pending "..." do\n ...\n end
+options head
 	pending "${1}" do
 		${0}
 	end
@@ -941,11 +1000,13 @@ abbr    pending "..." do\n ...\n end
 snippet rspec_shared_examples
 alias   shared_examples
 abbr    shared_examples ...
+options head
 	shared_examples "${0:#:shared examples name}"
 
 snippet rspec_it_behaves_like
 alias   it_behaves_like
 abbr    it_behaves_like ...
+options head
 	it_behaves_like "${0:#:shared examples name}"
 # }}}
 
