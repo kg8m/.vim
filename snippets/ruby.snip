@@ -837,6 +837,21 @@ options head
 	assert_no_difference -> { ${1} } do
 		${0}
 	end
+
+snippet assert_predicate
+abbr    assert_predicate {object}, :{predicate}
+options head
+	assert_predicate ${1:#:object}, :${0:#:predicate}
+
+snippet assert_not_predicate
+abbr    assert_not_predicate {object}, :{predicate}
+options head
+	assert_not_predicate ${1:#:object}, :${0:#:predicate}
+
+snippet assert_dom_equal
+abbr    assert_dom_equal {expected}, {actual}
+options head
+	assert_dom_equal ${1:#:expected}, :${0:#:actual}
 # }}}
 
 # RSpec  {{{
