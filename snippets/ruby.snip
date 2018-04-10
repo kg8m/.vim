@@ -732,6 +732,16 @@ abbr    human_attribute_name(:{attribute_name})
 options word
 	human_attribute_name(:${0:#:attribute_name})
 
+snippet preload_association
+abbr    ActiveRecord::Associations::Preloader.new.preload {records}, {associations}
+options head
+	ActiveRecord::Associations::Preloader.new.preload ${1:#:records}, ${2:#:associations}
+
+snippet preload_association_with_scope
+abbr    ActiveRecord::Associations::Preloader.new.preload {records}, {associations}, {preload_scope}
+options head
+	ActiveRecord::Associations::Preloader.new.preload ${1:#:records}, ${2:#:associations}, ${3:#:preload_scope}
+
 snippet activerecord_migration_reversible
 alias   reversible
 abbr    reversible do |direction|\n ...\n end
