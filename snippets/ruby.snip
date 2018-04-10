@@ -802,15 +802,15 @@ options head
 		${0}
 	end
 
-snippet assert_nothing_raise
-abbr    assert_nothing_raise {Exception} { ... }
+snippet assert_nothing_raised
+abbr    assert_nothing_raised {Exception} { ... }
 options head
-	assert_nothing_raise ${1:#:Exception} { ${0} }
+	assert_nothing_raised ${1:#:Exception} { ${0} }
 
-snippet assert_nothing_raise_block
-abbr    assert_nothing_raise {Exception} do\n ...\n end
+snippet assert_nothing_raised_block
+abbr    assert_nothing_raised {Exception} do\n ...\n end
 options head
-	assert_nothing_raise ${1:#:Exception} do
+	assert_nothing_raised ${1:#:Exception} do
 		${0}
 	end
 
