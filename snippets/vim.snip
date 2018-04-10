@@ -1,68 +1,48 @@
-snippet header standard Vim script file header
-	" File: ${1:`expand('%:t')`}
-	" Author: ${2:`g:snips_author`}
-	" Description: ${3}
-	${0:" Last Modified: `strftime("%B %d, %Y")`}
-snippet guard script reload guard
-	if exists('${1:did_`vim_snippets#Filename()`}') || &cp${2: || version < 700}
-		finish
-	endif
-	let $1 = 1${0}
-snippet f function
-	fun! ${1:`expand('%') =~ 'autoload' ? substitute(matchstr(expand('%:p'),'autoload/\zs.*\ze.vim'),'[/\\]','#','g').'#' : ''`}${2:function_name}(${3})
+snippet folding_marker
+abbr    " {{{\n ...\n ...  " }}}
+options word
+	" {{{
 		${0}
-	endf
-snippet t try ... catch statement
-	try
-		${1:${VISUAL}}
-	catch ${2}
+	" }}}
+
+snippet function
+abbr    function! {function_name}() abort\n ...\n endfunction
+options head
+	function! ${1:#:function_name}() abort  " {{{
 		${0}
-	endtry
-snippet for for ... in loop
-	for ${1} in ${2}
-		${0:${VISUAL}}
-	endfor
-snippet forkv for [key, value] in loop
-	for [${1},${2}] in items(${3})
-		${0}
-		unlet $1 $2
-	endfor
-snippet wh while loop
-	while ${1}
-		${0:${VISUAL}}
-	endw
-snippet if if statement
+	endfunction  " }}}
+
+snippet augroup
+abbr    augroup ...\n ...\n augroup END
+options head
+	augroup ${1:#:GroupName}  " {{{
+		autocmd!
+		autocmd ${2:#:EventName} ${3:#:filetype} ${0}
+	augroup END  " }}}
+
+snippet autocmd
+abbr    autocmd {EventName} {filetype} ...
+options head
+	autocmd ${1:#:EventName} ${2:#:filetype} ${0}
+
+snippet if
+abbr    if ...\n ...\n endif
+options head
 	if ${1}
-		${0:${VISUAL}}
+		${0}
 	endif
-snippet ife if ... else statement
+
+snippet ife
+abbr    if ...\n else\n ...\n endif
+options head
 	if ${1}
-		${2:${VISUAL}}
+		${0}
 	else
-		${0}
 	endif
-snippet au augroup ... autocmd block
-	augroup ${1:AU_NAME}
-		" this one is which you're most likely to use?
-		autocmd ${2:BufRead,BufNewFile} ${3:*.ext,*.ext3|<buffer[=N]>} ${0}
-	augroup end
-snippet bun Vundle.vim Plugin definition
-	Plugin '${0}'
-snippet plug Vundle.vim Plugin definition
-	Plugin '${0}'
-snippet let
-	let ${1:variable} = ${0: value}
-snippet se
-	set ${1:setting};
-snippet set
-	set ${1:setting} = ${0:value}
-snippet nn
-	nnoremap ${1} ${2}<CR>
-snippet no
-	noremap ${1} ${2}
-snippet vm
-	vmap ${1} ${2}
-snippet im
-	imap ${1} ${2}
-snippet exe
-	execute ${1}
+
+snippet for
+abbr    for ... in ...\n ...\n endfor
+options head
+	for ${1} in ${2}
+		${0}
+	endfor
