@@ -2,8 +2,7 @@ snippet snippet
 abbr    snippet\n alias ...\n abbr ...\n options head/word\n ...
 options head
 	snippet ${1}
-	alias   $1
-	abbr    $0
-	options ${2:head/word}
-	${3:`"\<Tab>"`}${0}
-	
+	alias   ${2}
+	abbr    ${3}
+	options ${4:head/word}
+		${0}
