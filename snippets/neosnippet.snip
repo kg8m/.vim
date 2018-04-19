@@ -1,4 +1,12 @@
 snippet snippet
+abbr    snippet\n abbr ...\n options head/word\n ...
+options head
+	snippet ${1}
+	abbr    ${2}
+	options ${3:head/word}
+		${0}
+
+snippet snippet_alias
 abbr    snippet\n alias ...\n abbr ...\n options head/word\n ...
 options head
 	snippet ${1}
