@@ -70,7 +70,7 @@ options head
 snippet module
 abbr    module ...\n end
 options head
-	module ${1`substitute(vim_snippets#Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
+	module ${1:`substitute(vim_snippets#Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
 		${0}
 	end
 
@@ -813,14 +813,14 @@ options head
 	end
 
 snippet assert_nothing_raised
-abbr    assert_nothing_raised {Exception} { ... }
+abbr    assert_nothing_raised { ... }
 options head
-	assert_nothing_raised ${1:#:Exception} { ${0} }
+	assert_nothing_raised { ${0} }
 
 snippet assert_nothing_raised_block
-abbr    assert_nothing_raised {Exception} do\n ...\n end
+abbr    assert_nothing_raised do\n ...\n end
 options head
-	assert_nothing_raised ${1:#:Exception} do
+	assert_nothing_raised do
 		${0}
 	end
 
