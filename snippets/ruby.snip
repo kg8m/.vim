@@ -319,6 +319,13 @@ options word
 	end
 
 snippet tap
+abbr    tap {|object|\n ...\n }
+options word
+	tap {|${1:object}|
+		${0}
+	}
+
+snippet tap_inline
 abbr    tap {|object| ... }
 options word
 	tap {|${1:object}| ${0} }
