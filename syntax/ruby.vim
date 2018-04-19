@@ -1,0 +1,1 @@
+syntax keyword rubyAssertion assert_predicate assert_not_predicate
