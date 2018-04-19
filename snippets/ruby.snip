@@ -126,6 +126,7 @@ options head
 
 snippet def_test
 alias   deftest
+alias   deft
 abbr    def test_{testcase}\n ...\n end
 options head
 	def test_${1}
@@ -184,7 +185,8 @@ options word
 		${0}
 	end
 
-snippet dovar
+snippet do_var
+alias   dov
 abbr    do |var|\n ...\n end
 options word
 	do |${1}|
