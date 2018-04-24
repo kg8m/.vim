@@ -354,9 +354,9 @@ alias   require_optparse
 abbr    require "optparse"\n ...\n opts.banner ...
 options word
 	require "optparse"
-	
+
 	options = { ${0:default: "args"} }
-	
+
 	ARGV.options do |opts|
 		opts.banner = "Usage: #{File.basename($PROGRAM_NAME)}"
 	end
@@ -552,10 +552,10 @@ alias   concern_extend
 abbr    extend ActiveSupport::Concern\n included do\n ... class_methods do\n ...
 options head
 	extend ActiveSupport::Concern
-	
+
 	included do
 	end
-	
+
 	class_methods do
 	end
 
