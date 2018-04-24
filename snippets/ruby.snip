@@ -296,6 +296,16 @@ abbr    def_delegators {object}, :{method1}, {method2}, ...
 options head
 	def_delegators :${1:#:object}, :${0:#:method}
 
+snippet delegate
+abbr    delegate :{method1}, {method2}, ..., to: {object}
+options head
+	delegate :${1:#:method}, to: :${0:#:object}
+
+snippet delegate_private
+abbr    delegate :{method1}, {method2}, ..., to: {object}, private: true
+options head
+	delegate :${1:#:method}, to: :${0:#:object}, private: true
+
 snippet alias
 abbr    alias new_name old_name
 options head
