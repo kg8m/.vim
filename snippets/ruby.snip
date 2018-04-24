@@ -867,6 +867,16 @@ abbr    assert_not_predicate {object}, :{predicate}
 options head
 	assert_not_predicate ${1:#:object}, :${0:#:predicate}
 
+snippet assert_respond_to
+abbr    assert_respond_to {object}, :{method}
+options head
+	assert_respond_to ${1:#:object}, :${0:#:method}
+
+snippet assert_not_respond_to
+abbr    assert_not_respond_to {object}, :{method}
+options head
+	assert_not_respond_to ${1:#:object}, :${0:#:method}
+
 snippet assert_dom_equal
 abbr    assert_dom_equal {expected}, {actual}
 options head
