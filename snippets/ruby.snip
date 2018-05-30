@@ -328,6 +328,21 @@ options word
 		end
 	end
 
+snippet instance_variable_get
+abbr    instance_variable_get(:@instance_var_name)
+options word
+	instance_variable_get(:@${0})
+
+snippet instance_variable_set
+abbr    instance_variable_set(:@instance_var_name)
+options word
+	instance_variable_set(:@${0})
+
+snippet instance_variable_defined?
+abbr    instance_variable_defined?(:@instance_var_name)
+options word
+	instance_variable_defined?(:@${0})
+
 snippet tap
 abbr    tap {|object|\n ...\n }
 options word
