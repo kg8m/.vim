@@ -15,7 +15,7 @@ endif
 
 let s:ignore = '^\s*\%($\|#\)'
 let s:heredoc_start = '<<\%(-\|\~\)\?' . "[\"'`]\\?" . '\zs[0-9a-zA-Z_]\+'
-let s:fold_start = '\C^\s*\%(class\|module\|def\|if\|unless\|when\|else\|begin\|rescue\|ensure\)\>\|' .
+let s:fold_start = '\C^\s*\%(class\|module\|def\|if\|unless\|when\|else\|elsif\|begin\|rescue\|ensure\)\>\|' .
                  \ '\<\%(public\|protected\|private\)\s*$\|' .
                  \ '\<do\%(\s*|.*|\)\?\s*$\|' .
                  \ '{\%(\s*|.*|\)\?\s*$\|' .
