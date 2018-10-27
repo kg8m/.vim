@@ -26,28 +26,28 @@ options head
 snippet eval
 abbr    eval(string)
 options word
-	eval(<<-RUBY, __FILE__, __LINE__ + 1)
+	eval(<<~RUBY, __FILE__, __LINE__ + 1)
 		${0}
 	RUBY
 
 snippet class_eval
 abbr    class_eval(string)
 options word
-	class_eval(<<-RUBY, __FILE__, __LINE__ + 1)
+	class_eval(<<~RUBY, __FILE__, __LINE__ + 1)
 		${0}
 	RUBY
 
 snippet module_eval
 abbr    module_eval(string)
 options word
-	module_eval(<<-RUBY, __FILE__, __LINE__ + 1)
+	module_eval(<<~RUBY, __FILE__, __LINE__ + 1)
 		${0}
 	RUBY
 
 snippet instance_eval
 abbr    instance_eval(string)
 options word
-	instance_eval(<<-RUBY, __FILE__, __LINE__ + 1)
+	instance_eval(<<~RUBY, __FILE__, __LINE__ + 1)
 		${0}
 	RUBY
 # }}}
