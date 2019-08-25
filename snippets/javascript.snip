@@ -1,0 +1,41 @@
+snippet function
+alias   func
+abbr    function() { ... }
+options word
+	function(${1}) { ${0} }
+
+snippet function_multilines
+alias   funcmulti
+abbr    function() {\n ...\n }
+options word
+	function(${1}) {
+		${0}
+	}
+
+snippet if
+abbr    if (...) {\n ...\n }
+options head
+	if (${1}) {
+		${0}
+	}
+
+snippet if_else
+alias   ife
+abbr    if (...) {\n ...\n }\n else {\n ...\n }
+options head
+	if (${1}) {
+		${0}
+	}
+	else {
+	}
+
+snippet if_else_if
+abbr    if (...) {\n ...\n }\n else if (...) {\n ...\n }\n else {\n ...\n }
+options head
+	if (${1}) {
+		${0}
+	}
+	else if () {
+	}
+	else {
+	}
