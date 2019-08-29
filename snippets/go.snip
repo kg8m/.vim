@@ -273,8 +273,8 @@ snippet DeepEqual
 alias deepequal
 abbr if !reflect.DeepEqual(expected, actual) { ... )
 abbr equals: test two identifiers with DeepEqual
-  if !reflect.DeepEqual(${1:expected}, ${2:actual}) {
-  	_, file, line, _ := runtime.Caller(0)
-  	fmt.Printf("%s:%d:\n\n\texp: %#v\n\n\tgot: %#v\n\n", filepath.Base(file), line, $1, $2)
-  	t.FailNow()
-  }
+	if !reflect.DeepEqual(${1:expected}, ${2:actual}) {
+		_, file, line, _ := runtime.Caller(0)
+		fmt.Printf("%s:%d:\n\n\texp: %#v\n\n\tgot: %#v\n\n", filepath.Base(file), line, $1, $2)
+		t.FailNow()
+	}
