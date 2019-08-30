@@ -972,6 +972,12 @@ abbr    it { is_expected.not_to ... }
 options head
 	it { is_expected.not_to ${0} }
 
+snippet rspec_xit
+alias   xit
+abbr    xit description
+options head
+	xit description
+
 snippet rspec_specify
 alias   specify
 abbr    specify "{description}" do\n ...\n end
