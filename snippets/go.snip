@@ -140,7 +140,7 @@ abbr func XXX(...) [yyy] { ... }
 snippet Printf
 alias printf
 abbr Printf(...)
-	Printf("%${1:s}", ${2:var})
+	Printf("${1:%s}", ${2:var})
 
 snippet Println
 alias println
@@ -154,11 +154,11 @@ abbr Errorf(...)
 
 snippet Sprintf
 abbr Sprintf(...)
-	Sprintf("%${1:s}", ${2:var})
+	Sprintf("${1:%s}", ${2:var})
 
 snippet fmt_printf
 abbr fmt.Printf(...)
-	fmt.Printf("%${1:s}", ${2:var})
+	fmt.Printf("${1:%s}", ${2:var})
 
 snippet fmt_println
 abbr fmt.Println(...)
@@ -170,11 +170,11 @@ abbr fmt.Errorf(...)
 
 snippet fmt_sprintf
 abbr fmt.Sprintf(...)
-	fmt.Sprintf("%${1:s}", ${2:var})
+	fmt.Sprintf("${1:%s}", ${2:var})
 
 snippet log_printf
 abbr log.Printf(...)
-	log.Printf("%${1:s}", ${2:var})
+	log.Printf("${1:%s}", ${2:var})
 
 snippet log_println
 abbr log.Println(...)
