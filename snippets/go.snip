@@ -44,7 +44,8 @@ abbr import (\n ... \n)
 		"${1:package}"
 	)
 
-snippet interface
+snippet type_interface
+alias interface_type
 abbr type XXX interface { ... }
 	type ${1:Interface} interface {
 		${2:/* TODO: add methods */}
@@ -204,7 +205,8 @@ abbr select { case a := <-chan: ... }
 		${0}
 	}
 
-snippet struct
+snippet type_struct
+alias struct_type
 abbr type T struct { ... }
 	type ${1:Type} struct {
 		${0}
