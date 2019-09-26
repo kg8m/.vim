@@ -217,6 +217,13 @@ abbr package ...
 	package ${1:main}
 
 snippet select
+abbr select { case <-chan: ... }
+	select {
+	case <-${1:chan1}
+		${0}
+	}
+
+snippet select_assign
 abbr select { case a := <-chan: ... }
 	select {
 	case ${1:v1} := <-${2:chan1}
