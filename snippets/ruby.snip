@@ -306,6 +306,16 @@ abbr    delegate :{method1}, {method2}, ..., to: {object}, private: true
 options head
 	delegate :${1:#:method}, to: :${0:#:object}, private: true
 
+snippet delegate_prefix
+abbr    delegate :{method1}, :{method2}, ..., to: :{object}, prefix: :{prefix}
+options head
+	delegate :${1:#:method1}, to: :${2:#:object}, prefix: :${3:#:prefix}
+
+snippet delegate_allow_nil
+abbr    delegate :{method1}, :{method2}, ..., to: :{object}, allow_nil: {allow_nil}
+options head
+	delegate :${1:#:method1}, to: :${2:#:object}, allow_nil: ${3:true}
+
 snippet alias
 abbr    alias new_name old_name
 options head
@@ -315,6 +325,11 @@ snippet alias_symbol
 abbr    alias :new_name :old_name
 options head
 	alias :${1:#:new_name} :${0:#:old_name}
+
+snippet alias_method_chain
+abbr    alias_method_chain :{method_name}, :{feature}
+options word
+	alias_method_chain :${1:method_name}, :${2:feature}
 
 snippet method_missing
 abbr    method_missing(method, *args, &block) ...
@@ -604,7 +619,7 @@ options word
 	ActiveSupport::HashWithIndifferentAccess
 # }}}
 
-# ActiveRecord  {{{
+# ActiveRecord/ActiveModel  {{{
 snippet activerecord
 alias   ActiveRecord
 abbr    ActiveRecord
@@ -634,6 +649,33 @@ alias   ActiveRecord::RecordInvalid
 abbr    ActiveRecord::RecordInvalid
 options word
 	ActiveRecord::RecordInvalid
+
+snippet activerecord_rollback
+alias   ActiveRecord::Rollback
+abbr    ActiveRecord::Rollback
+options word
+	ActiveRecord::Rollback
+
+snippet belongs_to
+abbr    belongs_to :{association_name}
+options word
+	belongs_to :${1:association_name}
+
+snippet has_one
+abbr    has_one :{association_name}
+options word
+	has_one :${1:association_name}
+
+snippet has_many
+abbr    has_many :{association_name}
+options word
+	has_many :${1:association_name}
+
+snippet has_and_belongs_to_many
+alias   habtm
+abbr    has_and_belongs_to_many :{association_name}
+options word
+	has_and_belongs_to_many :${1:association_name}
 
 snippet activerecord_relation_select
 alias   select_relation
@@ -738,33 +780,17 @@ abbr    accepts_nested_attributes_for ...
 options head
 	accepts_nested_attributes_for :${0}
 
-snippet i18nt_activerecord_model
-alias   I18nt_activerecord_model
-abbr    I18n.t "activerecord.models.{model_name}"
+snippet activerecord_human_name
+alias   model_name_human
+abbr    model_name.human
 options word
-	I18n.t "activerecord.models.${0:#:model_name}"
-
-snippet i18nt_activerecord_attribute
-alias   I18nt_activerecord_attribute
-abbr    I18n.t "activerecord.attributes.{model_name}.{attribute_name}"
-options word
-	I18n.t "activerecord.attributes.${1:#:model_name}.${0:#:attribute_name}"
-
-snippet t_activerecord_model
-abbr    t "activerecord.models.{model_name}"
-options word
-	t "activerecord.models.${0:#:model_name}"
-
-snippet t_activerecord_attribute
-abbr    t "activerecord.attributes.{model_name}.{attribute_name}"
-options word
-	t "activerecord.attributes.${1:#:model_name}.${0:#:attribute_name}"
+	model_name.human
 
 snippet activerecord_human_attribute_name
 alias   human_attribute_name
 abbr    human_attribute_name(:{attribute_name})
 options word
-	human_attribute_name(:${0:#:attribute_name})
+	human_attribute_name(:${1:#:attribute_name})
 
 snippet preload_association
 abbr    ActiveRecord::Associations::Preloader.new.preload {records}, {associations}
@@ -775,6 +801,132 @@ snippet preload_association_with_scope
 abbr    ActiveRecord::Associations::Preloader.new.preload {records}, {associations}, {preload_scope}
 options head
 	ActiveRecord::Associations::Preloader.new.preload ${1:#:records}, ${2:#:associations}, ${3:#:preload_scope}
+
+snippet scope
+abbr    scope :{name}, -> { ... }
+options word
+	scope :${1:#:name}, -> { ${0} }
+
+snippet scope_with_argument
+abbr    scope :{name}, -> (...) { ... }
+options word
+	scope :${1:#:name}, -> (${2:#:argument}) { ${0} }
+
+snippet named_scope
+abbr    named_scope :{name}, lambda { ... }
+options word
+	scope :${1:#:name}, lambda { ${0} }
+
+snippet named_scope_with_argument
+abbr    named_scope :{name}, lambda {|arg| ... }
+options word
+	scope :${1:#:name}, lambda {|${2:#:argument}| ${0} }
+
+snippet validates_acceptance_of
+abbr    validates_acceptance_of :{attribute}
+options word
+	validates_acceptance_of :${1:#:attribute}
+
+snippet validates_confirmation_of
+abbr    validates_confirmation_of :{attribute}
+options word
+	validates_confirmation_of :${1:#:attribute}
+
+snippet validates_exclusion_of
+abbr    validates_exclusion_of :{attribute}
+options word
+	validates_exclusion_of :${1:#:attribute}
+
+snippet validates_format_of
+abbr    validates_format_of :{attribute}, with: /.../
+options word
+	validates_format_of :${1:#:attribute}, with: /${2:#:pattern}/
+
+snippet validates_inclusion_of
+abbr    validates_inclusion_of :{attribute}
+options word
+	validates_inclusion_of :${1:#:attribute}
+
+snippet validates_length_of
+abbr    validates_length_of :{attribute}
+options word
+	validates_length_of :${1:#:attribute}
+
+snippet validates_numericality_of
+abbr    validates_numericality_of :{attribute}
+options word
+	validates_numericality_of :${1:#:attribute}
+
+snippet validates_presence_of
+abbr    validates_presence_of :{attribute}
+options word
+	validates_presence_of :${1:#:attribute}
+
+snippet validates_uniqueness_of
+abbr    validates_uniqueness_of :{attribute}
+options word
+	validates_uniqueness_of :${1:#:attribute}
+
+snippet validates_acceptance_sexy
+abbr    validates :{attribute}, acceptance: true
+options word
+	validates :${1:#:attribute}, acceptance: true
+
+snippet validates_confirmation_sexy
+abbr    validates :{attribute}, confirmation: true
+options word
+	validates :${1:#:attribute}, confirmation: true
+
+snippet validates_exclusion_sexy
+abbr    validates :{attribute}, exclusion: { ... }
+options word
+	validates :${1:#:attribute}, exclusion: { ${0} }
+
+snippet validates_format_sexy
+abbr    validates :{attribute}, format: { with: /.../ }
+options word
+	validates :${1:#:attribute}, format: { with: /${2:#:pattern}/ }
+
+snippet validates_inclusion_sexy
+abbr    validates :{attribute}, inclusion: { ... }
+options word
+	validates :${1:#:attribute}, inclusion: { ${0} }
+
+snippet validates_length_sexy
+abbr    validates :{attribute}, length: { ... }
+options word
+	validates :${1:#:attribute}, length: { ${0} }
+
+snippet validates_numericality_sexy
+abbr    validates :{attribute}, numericality: true
+options word
+	validates :${1:#:attribute}, numericality: true
+
+snippet validates_presence_sexy
+abbr    validates :{attribute}, presence: true
+options word
+	validates :${1:#:attribute}, presence: true
+
+snippet validates_uniqueness_sexy
+abbr    validates :{attribute}, uniqueness: true
+options word
+	validates :${1:#:attribute}, uniqueness: true
+
+snippet activerecord_migration_create_table
+alias   create_table
+abbr    create_table :{table_name} do |t| ... end
+options head
+	create_table :${1:#:table_name} do |t|
+		t.${0}
+	end
+
+snippet activerecord_migration_change_table
+alias   change_table
+abbr    change_table :{table_name} do |t| ... end
+options head
+	change_table :${1:#:table_name} do |t|
+		t.${0}
+	end
 
 snippet activerecord_migration_reversible
 alias   reversible
@@ -796,6 +948,112 @@ options head
 	say_with_time "${1}" do
 		${0}
 	end
+# }}}
+
+# ActionController  {{{
+snippet before_action
+abbr    before_action :{method_name}
+options word
+	before_action :${1:method_name}
+
+snippet before_filter
+abbr    before_filter :{method_name}
+options word
+	before_filter :${1:method_name}
+
+snippet after_action
+abbr    after_action :{method_name}
+options word
+	after_action :${1:method_name}
+
+snippet after_filter
+abbr    after_filter :{method_name}
+options word
+	after_filter :${1:method_name}
+
+snippet around_action
+abbr    around_action :{method_name}
+options word
+	around_action :${1:method_name}
+
+snippet around_filter
+abbr    around_filter :{method_name}
+options word
+	around_filter :${1:method_name}
+
+snippet params_for_strong_parameters
+alias   params
+abbr    params.require(:{model_name}).permit()
+options head
+	params.require(:${1:model_name}).permit()
+
+snippet respond_to_format
+abbr    respond_to do |format| format... { ... } end
+options head
+	respond_to do |format|
+		format.${1:html} { ${0} }
+	end
+
+snippet format
+abbr    format... { ... }
+options head
+	format.${1:js|xml|html} { ${0} }
+# }}}
+
+# I18n  {{{
+snippet i18n_translate
+alias   I18n_translate
+abbr    I18n.t "{key}"
+options word
+	I18n.t "${0:key}"
+
+snippet i18n_translate_activerecord_model
+alias   I18n_translate_activerecord_model
+abbr    I18n.t "activerecord.models.{model_name}"
+options word
+	I18n.t "activerecord.models.${0:#:model_name}"
+
+snippet i18n_translate_activerecord_attribute
+alias   I18n_translate_activerecord_attribute
+abbr    I18n.t "activerecord.attributes.{model_name}.{attribute_name}"
+options word
+	I18n.t "activerecord.attributes.${1:#:model_name}.${0:#:attribute_name}"
+
+snippet translate_activerecord_model
+abbr    t "activerecord.models.{model_name}"
+options word
+	t "activerecord.models.${0:#:model_name}"
+
+snippet translate_activerecord_attribute
+abbr    t "activerecord.attributes.{model_name}.{attribute_name}"
+options word
+	t "activerecord.attributes.${1:#:model_name}.${0:#:attribute_name}"
+# }}}
+
+# Test Common  {{{
+snippet test_send_request_xhr_get
+alias   xhr_get
+abbr    xhr :get, :{action}
+options head
+	xhr :get, :${1:#:action}
+
+snippet test_send_request_xhr_post
+alias   xhr_post
+abbr    xhr :post, :{action}
+options head
+	xhr :post, :${1:#:action}
+
+snippet test_send_request_xhr_put
+alias   xhr_put
+abbr    xhr :put, :{action}
+options head
+	xhr :put, :${1:#:action}
+
+snippet test_send_request_xhr_delete
+alias   xhr_delete
+abbr    xhr :delete, :{action}
+options head
+	xhr :delete, :${1:#:action}
 # }}}
 
 # TestUnit  {{{
@@ -912,6 +1170,11 @@ snippet assert_not_respond_to
 abbr    assert_not_respond_to {object}, :{method}
 options head
 	assert_not_respond_to ${1:#:object}, :${0:#:method}
+
+snippet assert_redirected_to
+abbr    assert_redirected_to {url}
+options head
+	assert_redirected_to ${1:url}
 
 snippet assert_dom_equal
 abbr    assert_dom_equal {expected}, {actual}
@@ -1090,13 +1353,4 @@ alias   it_behaves_like
 abbr    it_behaves_like ...
 options head
 	it_behaves_like "${0:#:shared examples name}"
-# }}}
-
-# SQL  {{{
-snippet sql_coalesce
-alias   coalesce
-alias   COALESCE
-abbr    COALESCE
-options word
-	COALESCE
 # }}}

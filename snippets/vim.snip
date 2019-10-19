@@ -32,11 +32,22 @@ options head
 		${0}
 	endif
 
-snippet ife
+snippet if_else
+alias   ife
 abbr    if ...\n else\n ...\n endif
 options head
 	if ${1}
 		${0}
+	else
+	endif
+
+snippet if_elseif
+alias   ifeif
+abbr    if ...\n elseif\n ...\n else\n ...\n endif
+options head
+	if ${1}
+		${0}
+	elseif 
 	else
 	endif
 
