@@ -161,13 +161,29 @@ snippet rspec_shared_examples
 alias   shared_examples
 abbr    shared_examples ...
 options head
-	shared_examples "${0:#:shared examples name}"
+	shared_examples "${1:#:shared examples name}" do
+		${0}
+	end
+
+snippet rspec_shared_examples_for
+alias   shared_examples_for
+abbr    shared_examples_for ...
+options head
+	shared_examples_for "${1:#:shared examples name}" do
+		${0}
+	end
 
 snippet rspec_it_behaves_like
 alias   it_behaves_like
 abbr    it_behaves_like ...
 options head
 	it_behaves_like "${0:#:shared examples name}"
+
+snippet rspec_it_should_behave_like
+alias   it_should_behave_like
+abbr    it_should_behave_like ...
+options head
+	it_should_behave_like "${0:#:shared examples name}"
 
 snippet change_by
 abbr    change({receiver}, :{method}).by({difference})
