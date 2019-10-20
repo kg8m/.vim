@@ -1,0 +1,190 @@
+snippet rspec_subject
+alias   subject
+abbr    subject { ... }
+options head
+	subject { ${0} }
+
+snippet rspec_let
+alias   let
+abbr    let(...) { ... }
+options head
+	let(:${1}) { ${0} }
+
+snippet rspec_let!
+alias   let!
+abbr    let!(...) { ... }
+options head
+	let!(:${1}) { ${0} }
+
+snippet rspec_it
+alias   it
+abbr    it "{description}" do\n ...\n end
+options head
+	it "${1:#:description}" do
+		${0}
+	end
+
+snippet rspec_it_should
+alias   it_should
+alias   itshould
+abbr    it { should ... }
+options head
+	it { should ${0} }
+
+snippet rspec_it_should_not
+alias   it_should_not
+alias   itshould_not
+abbr    it { should_not ... }
+options head
+	it { should_not ${0} }
+
+snippet rspec_it_is_expected_to
+alias   it_is_expected_to
+abbr    it { is_expected.to ... }
+options head
+	it { is_expected.to ${0} }
+
+snippet rspec_it_is_expected_not_to
+alias   it_is_expected_not_to
+abbr    it { is_expected.not_to ... }
+options head
+	it { is_expected.not_to ${0} }
+
+snippet rspec_xit
+alias   xit
+abbr    xit description
+options head
+	xit description
+
+snippet rspec_specify
+alias   specify
+abbr    specify "{description}" do\n ...\n end
+options head
+	specify "${1:#:description}" do
+		${0}
+	end
+
+snippet rspec_specify_should
+alias   specify_should
+alias   specifyshould
+abbr    specify { should ... }
+options head
+	specify { ${0} }
+
+snippet expect_to
+abbr    expect(...).to ...
+options head
+	expect(${1}).to ${0}
+
+snippet expect_block_to
+abbr    expect { ... }.to ...
+options head
+	expect { ${1} }.to ${0}
+
+snippet rspec_describe
+alias   describe
+abbr    describe ... do\n ...\n end
+options head
+	describe ${1:`substitute(substitute(vim_snippets#Filename(), '_spec$', '', ''), '\(_\|^\)\(.\)', '\u\2', 'g')`} do
+		${0}
+	end
+
+snippet rspec_context
+alias   context
+abbr    context "{context}" do\n ...\n end
+options head
+	context "${1}" do
+		${0}
+	end
+
+snippet rspec_before
+alias   before
+abbr    before do\n ...\n end
+options head
+	before do
+		${0}
+	end
+
+snippet rspec_before_each
+alias   before_each
+alias   beforeeach
+abbr    before :each do\n ...\n end
+options head
+	before :each do
+		${0}
+	end
+
+snippet rspec_before_all
+alias   before_all
+alias   beforeall
+abbr    before :all do\n ...\n end
+options head
+	before :all do
+		${0}
+	end
+
+snippet rspec_after
+alias   after
+abbr    after do\n ...\n end
+options head
+	after do
+		${0}
+	end
+
+snippet rspec_after_each
+alias   after_each
+alias   aftereach
+abbr    after :each do\n ...\n end
+options head
+	after :each do
+		${0}
+	end
+
+snippet rspec_after_all
+alias   after_all
+alias   afterall
+abbr    after :all do\n ...\n end
+options head
+	after :all do
+		${0}
+	end
+
+snippet rspec_pending
+alias   pending
+abbr    pending "..." do\n ...\n end
+options head
+	pending "${1}" do
+		${0}
+	end
+
+snippet rspec_shared_examples
+alias   shared_examples
+abbr    shared_examples ...
+options head
+	shared_examples "${0:#:shared examples name}"
+
+snippet rspec_it_behaves_like
+alias   it_behaves_like
+abbr    it_behaves_like ...
+options head
+	it_behaves_like "${0:#:shared examples name}"
+
+snippet change_by
+abbr    change({receiver}, :{method}).by({difference})
+options word
+	change(${1:#:receiver}, :${2:#:method}).by(${3:#:difference})
+
+snippet change_from_to
+abbr    change({receiver}, :{method}).from({from}).to({to})
+options word
+	change(${1:#:receiver}, :${2:#:method}).from(${3:#:from}).to(${4:#:to})
+
+snippet change_by_block
+abbr    change { {subject} }.by({difference})
+options word
+	change { ${1:#:subject} }.by(${2:#:difference})
+
+snippet change_from_to_block
+abbr    change { {subject} }.from({from}).to({to})
+options word
+	change { ${1:#:subject} }.from(${2:#:from}).to(${3:#:to})

@@ -1,0 +1,23 @@
+snippet test_send_request_xhr_get
+alias   xhr_get
+abbr    xhr :get, :{action}
+options head
+	xhr :get, :${1:#:action}
+
+snippet test_send_request_xhr_post
+alias   xhr_post
+abbr    xhr :post, :{action}
+options head
+	xhr :post, :${1:#:action}
+
+snippet test_send_request_xhr_put
+alias   xhr_put
+abbr    xhr :put, :{action}
+options head
+	xhr :put, :${1:#:action}
+
+snippet test_send_request_xhr_delete
+alias   xhr_delete
+abbr    xhr :delete, :{action}
+options head
+	xhr :delete, :${1:#:action}

@@ -1,0 +1,36 @@
+snippet activerecord_migration_create_table
+alias   create_table
+abbr    create_table :{table_name} do |t| ... end
+options head
+	create_table :${1:#:table_name} do |t|
+		t.${0}
+	end
+
+snippet activerecord_migration_change_table
+alias   change_table
+abbr    change_table :{table_name} do |t| ... end
+options head
+	change_table :${1:#:table_name} do |t|
+		t.${0}
+	end
+
+snippet activerecord_migration_reversible
+alias   reversible
+abbr    reversible do |direction|\n ...\n end
+options head
+	reversible do |direction|
+		direction.up do
+			${0}
+		end
+
+		direction.down do
+		end
+	end
+
+snippet activerecord_migration_say_with_time
+alias   say_with_time
+abbr    say_with_time "{message}" do\n ...\n end
+options head
+	say_with_time "${1}" do
+		${0}
+	end

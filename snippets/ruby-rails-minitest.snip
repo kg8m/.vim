@@ -1,0 +1,68 @@
+snippet assert_raise
+abbr    assert_raise({Exception}) { ... }
+options head
+	assert_raise(${1:#:Exception}) { ${0} }
+
+snippet assert_raise_block
+abbr    assert_raise {Exception} do\n ...\n end
+options head
+	assert_raise ${1:#:Exception} do
+		${0}
+	end
+
+snippet assert_nothing_raised
+abbr    assert_nothing_raised { ... }
+options head
+	assert_nothing_raised { ${0} }
+
+snippet assert_nothing_raised_block
+abbr    assert_nothing_raised do\n ...\n end
+options head
+	assert_nothing_raised do
+		${0}
+	end
+
+snippet assert_difference
+abbr    assert_difference -> { ... }, ... do\n ...\n end
+options head
+	assert_difference -> { ${1} }, ${2} do
+		${0}
+	end
+
+snippet assert_no_difference
+abbr    assert_no_difference -> { ... } do\n ...\n end
+options head
+	assert_no_difference -> { ${1} } do
+		${0}
+	end
+
+snippet assert_changes
+abbr    assert_changes -> { ... } do\n ...\n end
+options head
+	assert_changes -> { ${1} } do
+		${0}
+	end
+
+snippet assert_no_changes
+abbr    assert_no_changes -> { ... } do\n ...\n end
+options head
+	assert_no_changes -> { ${1} } do
+		${0}
+	end
+
+snippet assert_changes_with_from_to
+abbr    assert_changes -> { ... }, from: ..., to: ... do\n ...\n end
+options head
+	assert_changes -> { ${1} }, from: ${2}, to: ${3} do
+		${0}
+	end
+
+snippet assert_redirected_to
+abbr    assert_redirected_to {url}
+options head
+	assert_redirected_to ${1:url}
+
+snippet assert_dom_equal
+abbr    assert_dom_equal {expected}, {actual}
+options head
+	assert_dom_equal ${1:#:expected}, :${0:#:actual}
