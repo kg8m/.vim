@@ -1,35 +1,34 @@
-snippet activerecord
-alias   ActiveRecord
+snippet ActiveRecord
 abbr    ActiveRecord
 options word
 	ActiveRecord
 
-snippet activerecord_base
-alias   ActiveRecord::Base
+snippet ActiveRecord::Base
+alias   ActiveRecord_Base
 abbr    ActiveRecord::Base
 options word
 	ActiveRecord::Base
 
-snippet activerecord_relation
-alias   ActiveRecord::Relation
+snippet ActiveRecord::Relation
+alias   ActiveRecord_Relation
 abbr    ActiveRecord::Relation
 options word
 	ActiveRecord::Relation
 
-snippet activerecord_recordnotfound
-alias   ActiveRecord::RecordNotFound
+snippet ActiveRecord::RecordNotFound
+alias   ActiveRecord_RecordNotFound
 abbr    ActiveRecord::RecordNotFound
 options word
 	ActiveRecord::RecordNotFound
 
-snippet activerecord_recordinvalid
-alias   ActiveRecord::RecordInvalid
+snippet ActiveRecord::RecordInvalid
+alias   ActiveRecord_RecordInvalid
 abbr    ActiveRecord::RecordInvalid
 options word
 	ActiveRecord::RecordInvalid
 
-snippet activerecord_rollback
-alias   ActiveRecord::Rollback
+snippet ActiveRecord::Rollback
+alias   ActiveRecord_Rollback
 abbr    ActiveRecord::Rollback
 options word
 	ActiveRecord::Rollback
@@ -37,116 +36,116 @@ options word
 snippet belongs_to
 abbr    belongs_to :{association_name}
 options word
-	belongs_to :${1:association_name}
+	belongs_to :${1:#:association_name}
 
 snippet has_one
 abbr    has_one :{association_name}
 options word
-	has_one :${1:association_name}
+	has_one :${1:#:association_name}
 
 snippet has_many
 abbr    has_many :{association_name}
 options word
-	has_many :${1:association_name}
+	has_many :${1:#:association_name}
 
 snippet has_and_belongs_to_many
 alias   habtm
 abbr    has_and_belongs_to_many :{association_name}
 options word
-	has_and_belongs_to_many :${1:association_name}
+	has_and_belongs_to_many :${1:#:association_name}
 
-snippet activerecord_relation_select
+snippet relation_select
 alias   select_relation
 abbr    select(...)
 options word
 	select(${0})
 
-snippet activerecord_relation_joins
+snippet relation_joins
 alias   joins_relation
 abbr    joins(...)
 options word
 	joins(${0})
 
-snippet activerecord_relation_includes
+snippet relation_includes
 alias   includes_relation
 abbr    includes(...)
 options word
 	includes(${0})
 
-snippet activerecord_relation_references
+snippet relation_references
 alias   references_relation
 abbr    references(...)
 options word
 	references(${0})
 
-snippet activerecord_relation_eager_load
+snippet relation_eager_load
 alias   eager_load_relation
 abbr    eager_load(...)
 options word
 	eager_load(${0})
 
-snippet activerecord_relation_preload
+snippet relation_preload
 alias   preload_relation
 abbr    preload(...)
 options word
 	preload(${0})
 
-snippet activerecord_relation_where
+snippet relation_where
 alias   where_relation
 abbr    where(...)
 options word
 	where(${0})
 
-snippet activerecord_relation_rewhere
+snippet relation_rewhere
 alias   rewhere_relation
 abbr    rewhere(...)
 options word
 	rewhere(${0})
 
-snippet activerecord_relation_where_not
+snippet relation_where_not
 alias   where_not_relation
 alias   not_relation
 abbr    where.not(...)
 options word
 	where.not(${0})
 
-snippet activerecord_relation_having
+snippet relation_having
 alias   having_relation
 abbr    having(...)
 options word
 	having(${0})
 
-snippet activerecord_relation_group
+snippet relation_group
 alias   group_relation
 abbr    group(...)
 options word
 	group(${0})
 
-snippet activerecord_relation_order
+snippet relation_order
 alias   order_relation
 abbr    order(...)
 options word
 	order(${0})
 
-snippet activerecord_relation_reorder
+snippet relation_reorder
 alias   reorder_relation
 abbr    reorder(...)
 options word
 	reorder(${0})
 
-snippet activerecord_relation_reverse_order
+snippet relation_reverse_order
 alias   reverse_order_relation
 abbr    reverse_order
 options word
 	reverse_order
 
-snippet activerecord_relation_limit
+snippet relation_limit
 alias   limit_relation
 abbr    limit(...)
 options word
 	limit(${0})
 
-snippet activerecord_relation_offset
+snippet relation_offset
 alias   offset_relation
 abbr    offset(...)
 options word
@@ -158,14 +157,13 @@ abbr    accepts_nested_attributes_for ...
 options head
 	accepts_nested_attributes_for :${0}
 
-snippet activerecord_human_name
+snippet human_name
 alias   model_name_human
 abbr    model_name.human
 options word
 	model_name.human
 
-snippet activerecord_human_attribute_name
-alias   human_attribute_name
+snippet human_attribute_name
 abbr    human_attribute_name(:{attribute_name})
 options word
 	human_attribute_name(:${1:#:attribute_name})
@@ -216,9 +214,9 @@ options word
 	validates_exclusion_of :${1:#:attribute}
 
 snippet validates_format_of
-abbr    validates_format_of :{attribute}, with: /.../
+abbr    validates_format_of :{attribute}, with: {pattern}
 options word
-	validates_format_of :${1:#:attribute}, with: /${2:#:pattern}/
+	validates_format_of :${1:#:attribute}, with: ${2:#:pattern}
 
 snippet validates_inclusion_of
 abbr    validates_inclusion_of :{attribute}
@@ -261,9 +259,9 @@ options word
 	validates :${1:#:attribute}, exclusion: { ${0} }
 
 snippet validates_format_sexy
-abbr    validates :{attribute}, format: { with: /.../ }
+abbr    validates :{attribute}, format: { with: {pattern} }
 options word
-	validates :${1:#:attribute}, format: { with: /${2:#:pattern}/ }
+	validates :${1:#:attribute}, format: { with: ${2:#:pattern} }
 
 snippet validates_inclusion_sexy
 abbr    validates :{attribute}, inclusion: { ... }

@@ -1,7 +1,36 @@
-snippet nbsp
-abbr    &nbsp;
+snippet amp
+abbr    amp;
+regexp  '\&[amp]*'
 options word
-	&nbsp;
+	amp;
+
+snippet nbsp
+abbr    nbsp;
+regexp  '\&[nbsp]*'
+options word
+	nbsp;
+
+snippet &gt;
+abbr    &gt;
+regexp  '\&[gt]*'
+options word
+	&gt;
+
+snippet &>
+abbr    &gt;
+options word
+	&gt;
+
+snippet &lt;
+abbr    &lt;
+regexp  '\&[lt]*'
+options word
+	&lt;
+
+snippet &<
+abbr    &lt;
+options word
+	&lt;
 
 snippet comment
 alias   <!--
@@ -28,7 +57,7 @@ options word
 snippet h1_with_attributes
 abbr    <h1 ...>...</h1>
 options word
-	<h1 ${1:attributes}>${0}</h1>
+	<h1 ${1:#:attributes}>${0}</h1>
 
 snippet h2
 abbr    <h2>...</h2>
@@ -38,7 +67,7 @@ options word
 snippet h2_with_attributes
 abbr    <h2 ...>...</h2>
 options word
-	<h2 ${1:attributes}>${0}</h2>
+	<h2 ${1:#:attributes}>${0}</h2>
 
 snippet h3
 abbr    <h3>...</h3>
@@ -48,7 +77,7 @@ options word
 snippet h3_with_attributes
 abbr    <h3 ...>...</h3>
 options word
-	<h3 ${1:attributes}>${0}</h3>
+	<h3 ${1:#:attributes}>${0}</h3>
 
 snippet h4
 abbr    <h4>...</h4>
@@ -58,7 +87,7 @@ options word
 snippet h4_with_attributes
 abbr    <h4 ...>...</h4>
 options word
-	<h4 ${1:attributes}>${0}</h4>
+	<h4 ${1:#:attributes}>${0}</h4>
 
 snippet h5
 abbr    <h5>...</h5>
@@ -68,7 +97,7 @@ options word
 snippet h5_with_attributes
 abbr    <h5 ...>...</h5>
 options word
-	<h5 ${1:attributes}>${0}</h5>
+	<h5 ${1:#:attributes}>${0}</h5>
 
 snippet h6
 abbr    <h6>...</h6>
@@ -78,18 +107,18 @@ options word
 snippet h6_with_attributes
 abbr    <h6 ...>...</h6>
 options word
-	<h6 ${1:attributes}>${0}</h6>
+	<h6 ${1:#:attributes}>${0}</h6>
 # }}}
 
 snippet script
-abbr    <script>...</script>
+abbr    <script>\n ...\n </script>
 options head
 	<script>
 		${0}
 	</script>
 
 snippet script_charset
-abbr    <script charset="utf-8">...</script>
+abbr    <script charset="utf-8">\n ...\n </script>
 options head
 	<script charset="utf-8">
 		${0}
@@ -98,19 +127,19 @@ options head
 snippet script_src
 abbr    <script src="{source}"></script>
 options head
-	<script src="${1:source}"></script>
+	<script src="${1:#:source}"></script>
 
 snippet div
-abbr    <div>...</div>
+abbr    <div>\n ...\n </div>
 options head
 	<div>
 		${0}
 	</div>
 
 snippet div_with_attributes
-abbr    <div ...>...</div>
+abbr    <div ...>\n ...\n </div>
 options head
-	<div ${1:attributes}>
+	<div ${1:#:attributes}>
 		${0}
 	</div>
 
@@ -122,7 +151,7 @@ options word
 snippet span_with_attributes
 abbr    <span ...>...</span>
 options word
-	<span ${1:attributes}>${0}</span>
+	<span ${1:#:attributes}>${0}</span>
 
 snippet q
 abbr    <q>...</q>

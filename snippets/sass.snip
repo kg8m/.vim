@@ -1,22 +1,22 @@
 snippet important
-alias   !important
-abbr    !important
+abbr    important
+regexp  '![important]'
 options word
-	!important
+	important
 
-snippet import_path
-alias   @import_path
+snippet @import_path
+alias   import_path
 abbr    @import "{path}";
 options head
-	@import "${1:path}";
+	@import "${1:#:path}";
 
-snippet import_url
-alias   @import_url
+snippet @import_url
+alias   import_url
 abbr    @import url({url})
 options head
-	@import url(${1:url})
+	@import url(${1:#:url})
 
 snippet border
 abbr    border: {line-width} {line-style} {color}
 options head
-	border: ${1:1px} ${2:solid} #${0:000}
+	border: ${1:1px} ${2:solid} #${3:000}

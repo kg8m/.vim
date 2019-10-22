@@ -60,11 +60,20 @@ options head
 		${0}
 	end
 
-snippet class_parent
+snippet class_inherit
 abbr    class ... < {ParentClass}\n end
 options head
 	class ${1:`substitute(vim_snippets#Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`} < ${2}
 		${0}
+	end
+
+snippet class_exception
+abbr    class ... < StandardError\n ...\n end
+options head
+	class ${1:#:class_name} < StandardError
+		def initialize(message)
+			super(${0})
+		end
 	end
 
 snippet module
@@ -77,53 +86,33 @@ options head
 snippet class_inline
 abbr    class ...; ...; end
 options head
-	class ${1}; ${0}; end
+	class ${1:#:class_name}; ${0}; end
 
-snippet classexception
-abbr    class ... < StandardError\n ...\n end
-alias   class_exception
-options head
-	class ${1} < StandardError
-		def initialize(message)
-			super(${0})
-		end
-	end
-
-snippet classexception_inline
+snippet class_exception_inline
 abbr    class ... < StandardError; end
-alias   class_exception_inline
 options head
-	class ${0} < StandardError; end
+	class ${0:#:class_name} < StandardError; end
 
 snippet module_inline
 abbr    module ...; ...; end
 options head
-	module ${1}; ${0}; end
+	module ${1:#:module_name}; ${0}; end
 # }}}
 
 # def  {{{
 snippet def
 abbr    def ...\n end
 options head
-	def ${1}
+	def ${1:#:method_name}
 		${0}
 	end
 
 snippet def_rescue
 abbr    def ... rescue ... end
 options head
-	def ${1}
+	def ${1:#:method_name}
 		${0}
-	rescue ${2:#:StandardError} => e
-	end
-
-snippet def_test
-alias   deftest
-alias   deft
-abbr    def test_{testcase}\n ...\n end
-options head
-	def test_${1}
-		${0}
+	rescue ${2:StandardError} => e
 	end
 # }}}
 
@@ -136,7 +125,7 @@ options word
 snippet lambdav
 abbr    lambda {|var| ... }
 options word
-	lambda {|${1}| ${0} }
+	lambda {|${1:#:var}| ${0} }
 
 snippet ->
 abbr    -> { ... }
@@ -147,7 +136,7 @@ snippet ->a
 alias   ->v
 abbr    ->(args) { ... }
 options word
-	->(${1}) { ${0} }
+	->(${1:#:args}) { ${0} }
 
 snippet proc
 abbr    proc { ... }
@@ -157,17 +146,17 @@ options word
 snippet procv
 abbr    proc {|var| ... }
 options word
-	proc {|${1}| ${0} }
+	proc {|${1:#:var}| ${0} }
 
-snippet procnew
+snippet proc_new
 abbr    Proc.new { ... }
 options word
 	Proc.new { ${0} }
 
-snippet procnewv
+snippet proc_newv
 abbr    Proc.new {|var| ... }
 options word
-	Proc.new {|${1}| ${0} }
+	Proc.new {|${1:#:var}| ${0} }
 # }}}
 
 # do ... end  {{{
@@ -182,7 +171,7 @@ snippet do_var
 alias   dov
 abbr    do |var|\n ...\n end
 options word
-	do |${1}|
+	do |${1:#:var}|
 		${0}
 	end
 # }}}
@@ -191,7 +180,7 @@ options word
 snippet if
 abbr    if ...\n end
 options head
-	if ${1}
+	if ${1:#:condition}
 		${0}
 	end
 
@@ -199,15 +188,22 @@ snippet if_else
 alias   ife
 abbr    if ...\n else\n ...\n end
 options head
-	if ${1}
+	if ${1:#:condition}
 		${0}
 	else
+	end
+
+snippet else
+abbr    else\n ...\n end
+options head
+	else
+		${0}
 	end
 
 snippet unless
 abbr    unless ...\n ...\n end
 options head
-	unless ${1}
+	unless ${1:#:condition}
 		${0}
 	end
 
@@ -215,15 +211,15 @@ snippet case
 abbr    case\n when ...\n end
 options head
 	case
-	when ${1}
+	when ${1:#:condition}
 		${0}
 	end
 
 snippet case_object
 abbr    case {object}\n when ...\n end
 options head
-	case ${1}
-	when ${2}
+	case ${1:#:object}
+	when ${2:#:condition}
 		${0}
 	end
 # }}}
@@ -232,14 +228,14 @@ options head
 snippet while
 abbr    while ...\n ...\n end
 options head
-	while ${1}
+	while ${1:#:condition}
 		${0}
 	end
 
 snippet until
 abbr    until ...\n ...\n end
 options head
-	until ${1}
+	until ${1:#:condition}
 		${0}
 	end
 # }}}
@@ -250,6 +246,12 @@ alias   #!
 abbr    #!/usr/bin/env ruby
 options head
 	#!/usr/bin/env ruby
+
+snippet frozen_string_literal
+abbr    frozen_string_literal: true
+regexp  '# [frozen_string_literal]*'
+options word
+	frozen_string_literal: true
 
 snippet require
 options head
@@ -301,10 +303,22 @@ options head
 
 snippet method_missing
 abbr    method_missing(method, *args, &block) ...
-regexp  'def [method_missing]*$'
+regexp  'def [method_missing]*'
 options word
 	method_missing(method, *args, &block)
 		if method.to_s =~ ${1:#:regexp}
+			${0}
+		else
+			super
+		end
+	end
+
+snippet method_missing_match_predication
+abbr    method_missing(method, *args, &block) ... if method.match?(...) ...
+regexp  'def [method_missing_match_predication]*'
+options word
+	method_missing(method, *args, &block)
+		if method.to_s.match?(${1:#:regexp})
 			${0}
 		else
 			super
@@ -338,14 +352,12 @@ abbr    tap {|object| ... }
 options word
 	tap {|${1:object}| ${0} }
 
-snippet hash_new
-alias   Hash_new
+snippet Hash_new
 abbr    Hash.new{|h, k| h[k] = ... }
 options word
-	Hash.new {|${1:hash}, ${2:key}| $1[$2] = ${0} }
+	Hash.new {|${1:h}, ${2:k}| $1[$2] = ${0} }
 
 snippet NotImplementedError
-alias   notimplementederror
 abbr    NotImplementedError
 options word
 	NotImplementedError
@@ -354,7 +366,7 @@ snippet begin_rescue
 options head
 	begin
 		${0}
-	rescue ${1:#:Exception} => e
+	rescue ${1:StandardError} => e
 	end
 
 snippet optparse
@@ -370,10 +382,9 @@ options word
 	end
 
 snippet opts_on
-alias   opt
 abbr    opts.on(...)
 options head
-	opts.on("-${1:#:o}", "--${2:#:long-option-name}", ${3:String}, "${4:#:description}") do |value|
+	opts.on("-${1:#:short-option-name}", "--${2:#:long-option-name}", ${3:String}, "${4:#:description}") do |value|
 		${0}
 	end
 # }}}
@@ -394,52 +405,52 @@ options word
 snippet each_byte
 abbr    each_byte {|var| ... }
 options word
-	each_byte {|${1}| ${0} }
+	each_byte {|${1:#:var}| ${0} }
 
 snippet each_char
 abbr    each_char {|var| ... }
 options word
-	each_char {|${1}| ${0} }
+	each_char {|${1:#:var}| ${0} }
 
 snippet each_index
 abbr    each_index {|var| ... }
 options word
-	each_index {|${1}| ${0} }
+	each_index {|${1:#:var}| ${0} }
 
 snippet each_key
 abbr    each_key {|var| ... }
 options word
-	each_key {|${1}| ${0} }
+	each_key {|${1:#:var}| ${0} }
 
 snippet each_value
 abbr    each_value {|var| ... }
 options word
-	each_value {|${1}| ${0} }
+	each_value {|${1:#:var}| ${0} }
 
 snippet each_line
 abbr    each_line {|var| ... }
 options word
-	each_line {|${1}| ${0} }
+	each_line {|${1:#:var}| ${0} }
 
 snippet each_pair
 abbr    each_pair {|var| ... }
 options word
-	each_pair {|${1}| ${0} }
+	each_pair {|${1:#:var}| ${0} }
 
 snippet each_slice
 abbr    each_slice {|var| ... }
 options word
-	each_slice {|${1}| ${0} }
+	each_slice {|${1:#:var}| ${0} }
 
 snippet each_with_index
 abbr    each_with_index {|var, i| ... }
 options word
-	each_with_index {|${1}, ${2:i}| ${0} }
+	each_with_index {|${1:#:var}, ${2:i}| ${0} }
 
 snippet each_with_index_do
 abbr    each_with_index do |var, i|\n ...\n end
 options word
-	each_with_index do |${1}, ${2:i}|
+	each_with_index do |${1:#:var}, ${2:i}|
 		${0}
 	end
 
@@ -460,57 +471,57 @@ options word
 snippet all?
 abbr    all? {|var| ... }
 options word
-	all? {|${1}| ${0} }
+	all? {|${1:#:var}| ${0} }
 
 snippet any?
 abbr    any? {|var| ... }
 options word
-	any? {|${1}| ${0} }
+	any? {|${1:#:var}| ${0} }
 
 snippet one?
 abbr    one? {|var| ... }
 options word
-	one? {|${1}| ${0} }
+	one? {|${1:#:var}| ${0} }
 
 snippet none?
 abbr    none? {|var| ... }
 options word
-	none? {|${1}| ${0} }
+	none? {|${1:#:var}| ${0} }
 
 snippet map
 abbr    map {|var| ... }
 options word
-	map {|${1}| ${0} }
+	map {|${1:#:var}| ${0} }
 
 snippet map!
 abbr    map! {|var| ... }
 options word
-	map! {|${1}| ${0} }
+	map! {|${1:#:var}| ${0} }
 
 snippet detect
 abbr    detect {|var| ... }
 options word
-	detect {|${1}| ${0} }
+	detect {|${1:#:var}| ${0} }
 
 snippet select
 abbr    select {|var| ... }
 options word
-	select {|${1}| ${0} }
+	select {|${1:#:var}| ${0} }
 
 snippet select!
 abbr    select! {|var| ... }
 options word
-	select {|${1}| ${0} }
+	select {|${1:#:var}| ${0} }
 
 snippet reject
 abbr    reject {|var| ... }
 options word
-	reject {|${1}| ${0} }
+	reject {|${1:#:var}| ${0} }
 
 snippet reject!
 abbr    reject! {|var| ... }
 options word
-	reject! {|${1}| ${0} }
+	reject! {|${1:#:var}| ${0} }
 
 snippet sort
 abbr    sort {|a, b| ... }
@@ -520,17 +531,17 @@ options word
 snippet sort_by
 abbr    sort_by {|var| ... }
 options word
-	sort_by {|${1}| ${0} }
+	sort_by {|${1:#:var}| ${0} }
 
 snippet group_by
 abbr    group_by {|var| ... }
 options word
-	group_by {|${1}| ${0} }
+	group_by {|${1:#:var}| ${0} }
 
 snippet partition
 abbr    partition {|var| ... }
 options word
-	partition {|${1}| ${0} }
+	partition {|${1:#:var}| ${0} }
 # }}}
 
 # File, Dir  {{{

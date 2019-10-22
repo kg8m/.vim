@@ -1,21 +1,38 @@
 snippet function
 alias   func
-abbr    function() { ... }
-options word
-	function(${1}) { ${0} }
-
-snippet function_multilines
-alias   funcmulti
 abbr    function() {\n ...\n }
 options word
-	function(${1}) {
+	function(${1:#:args}) {
+		${0}
+	}
+
+snippet function_with_name
+abbr    function {function_name}() {\n ...\n }
+options word
+	function ${1:#:function_name}(${2:#:args}) {
+		${0}
+	}
+
+snippet function_arrow
+alias   arrow_function
+abbr    ({argument}) => {\n ...\n }
+options word
+	(${1:#:argument}) => {
+		${0}
+	}
+
+snippet function_arrow_without_parentheses
+alias   arrow_function_without_parentheses
+abbr    {argument} => {\n ...\n }
+options word
+	${1:#:argument} => {
 		${0}
 	}
 
 snippet if
 abbr    if (...) {\n ...\n }
 options head
-	if (${1}) {
+	if (${1:#:condition}) {
 		${0}
 	}
 
@@ -23,20 +40,95 @@ snippet if_else
 alias   ife
 abbr    if (...) {\n ...\n }\n else {\n ...\n }
 options head
-	if (${1}) {
+	if (${1:#:condition}) {
 		${0}
 	}
 	else {
+	}
+
+snippet else
+abbr    else {\n ...\n }
+options head
+	else {
+		${0}
 	}
 
 snippet if_else_if
 alias   ifeif
 abbr    if (...) {\n ...\n }\n else if (...) {\n ...\n }\n else {\n ...\n }
 options head
-	if (${1}) {
+	if (${1:#:condition}) {
 		${0}
 	}
 	else if () {
 	}
 	else {
 	}
+
+snippet setTimeout
+abbr    setTimeout(function() {\n ...\n }, {timeout})
+options word
+	setTimeout(function() {
+	  ${0}
+	}, ${1:#:timeout})
+
+snippet setTimeout_arrow
+abbr    setTimeout(() => {\n ...\n }, {timeout})
+options word
+	setTimeout(() => {
+	  ${0}
+	}, ${1:#:timeout})
+
+snippet setInterval
+abbr    setInterval(function() {\n ...\n }, {interval})
+options word
+	setInterval(function() {
+	  ${0}
+	}, ${1:#:interval})
+
+snippet setInterval_arrow
+abbr    setInterval(() => {\n ...\n }, {interval})
+options word
+	setInterval(() => {
+	  ${0}
+	}, ${1:#:interval})
+
+snippet querySelector
+abbr    querySelector({selector})
+options word
+	querySelector(${1:#:selector})
+
+snippet querySelectorAll
+abbr    querySelectorAll({selector})
+options word
+	querySelectorAll(${1:#:selector})
+
+snippet addEventListener
+abbr    addEventListener({event}, function() {\n ...\n }
+options word
+	addEventListener("${1:#:event}", function() {
+		${0}
+	})
+
+snippet addEventListener_arrow
+abbr    addEventListener({event}, () => {\n ...\n }
+options word
+	addEventListener("${1:#:event}", () => {
+		${0}
+	})
+
+snippet addEventListener_DOMContentLoaded
+abbr    addEventListener("DOMContentLoaded", function() {\n ...\n }
+regexp  'document\.[addEventListener]*'
+options word
+	addEventListener("DOMContentLoaded", function() {
+		${0}
+	})
+
+snippet addEventListener_DOMContentLoaded_arrow
+abbr    addEventListener("DOMContentLoaded", () => {\n ...\n }
+regexp  'document\.[addEventListener]*'
+options word
+	addEventListener("DOMContentLoaded", () => {
+		${0}
+	})

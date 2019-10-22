@@ -3,13 +3,13 @@ extends ruby
 
 # Ruby  {{{
 snippet ruby_execution
-alias   <%
+alias   %
 abbr    <% ... %>
 options word
 	<% ${0} %>
 
 snippet ruby_expression
-alias   <%=
+alias   %=
 abbr    <%= ... %>
 options word
 	<%= ${0} %>
@@ -22,7 +22,7 @@ options word
 
 snippet ruby_each
 alias   each
-abbr    <% {enumerable}.each do |{item}| ... <% end %>
+abbr    <% {enumerable}.each do |{item}| %>\n ...\n <% end %>
 options word
 	<% ${1}.each do |${2}| %>
 		${0}
@@ -30,19 +30,28 @@ options word
 
 snippet ruby_if
 alias   if
-abbr    <% if {condition} %> ... <% end %>
+abbr    <% if {condition} %>\n ...\n <% end %>
 options word
 	<% if ${1:condition} %>
 		${0}
 	<% end %>
 
 snippet ruby_if_else
-alias   ifelse
-abbr    <% if {condition} %> ... <% else %> ... <% end %>
+alias   if_else
+alias   ife
+abbr    <% if {condition} %>\n ...\n <% else %>\n ...\n <% end %>
 options word
 	<% if ${1:condition} %>
 		${0}
 	<% else %>
+	<% end %>
+
+snippet ruby_else
+alias   else
+abbr    <% else %>\n ...\n <% end %>
+options word
+	<% else %>
+		${0}
 	<% end %>
 
 snippet ruby_pry
@@ -73,7 +82,7 @@ options head
 
 snippet rails_content_for
 alias   content_for
-abbr    <% content_for :{name} do %> ... <% end %>
+abbr    <% content_for :{name} do %>\n ...\n <% end %>
 options head
 	<% content_for :${1:head} do %>
 		${0}

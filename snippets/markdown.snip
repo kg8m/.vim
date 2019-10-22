@@ -1,49 +1,49 @@
 extends html
 
-snippet *
-alias   italic
+snippet italic
+alias   *
 abbr    *{italic_text}*
 options word
 	*${0:#:italic_text}*
 
-snippet **
-alias   bold
+snippet bold
+alias   **
 abbr    **{bold_text}**
 options word
 	**${0:#:bold_text}**
 
-snippet ***
-alias   bold_italic
+snippet bold_italic
+alias   ***
 abbr    ***{bold_italic_text}***
 options word
 	***${0:#:bold_italic_text}***
 
-snippet ===
-alias   h1
+snippet h1
+alias   ===
 abbr    ==================================================
 options head
 	`repeat("=", 50)`
 	
 	${0}
 
-snippet ---
-alias   h2
+snippet h2
+alias   ---
 abbr    --------------------------------------------------
 options head
 	`repeat("-", 50)`
 	
 	${0}
 
-snippet ```
-alias   code_block
+snippet code_block
+alias   ```
 abbr    ```\n {text}\n ```
 options head
 	\`\`\`
 	${0}
 	\`\`\`
 
-snippet ```l
-alias   code_block_with_language
+snippet code_block_with_language
+alias   ```l
 abbr    ```{language}\n {text}\n ```
 options head
 	\`\`\`${1:#:language}
