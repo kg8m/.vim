@@ -1,31 +1,31 @@
 snippet amp
-abbr    amp;
+abbr    &amp;
 regexp  '\&[amp]*'
 options word
 	amp;
 
 snippet nbsp
-abbr    nbsp;
+abbr    &nbsp;
 regexp  '\&[nbsp]*'
 options word
 	nbsp;
 
-snippet &gt;
+snippet gt
 abbr    &gt;
 regexp  '\&[gt]*'
 options word
-	&gt;
+	gt;
 
 snippet &>
 abbr    &gt;
 options word
 	&gt;
 
-snippet &lt;
+snippet lt
 abbr    &lt;
 regexp  '\&[lt]*'
 options word
-	&lt;
+	lt;
 
 snippet &<
 abbr    &lt;
@@ -52,108 +52,128 @@ options word
 snippet h1
 abbr    <h1>...</h1>
 options word
-	<h1>${0}</h1>
+regexp  '<[h1]*'
+	h1>${0}</h1>
 
 snippet h1_with_attributes
 abbr    <h1 ...>...</h1>
 options word
-	<h1 ${1:#:attributes}>${0}</h1>
+regexp  '<[h1_with_attributes]*'
+	h1 ${1:#:attributes}>${0}</h1>
 
 snippet h2
 abbr    <h2>...</h2>
 options word
-	<h2>${0}</h2>
+regexp  '<[h2]*'
+	h2>${0}</h2>
 
 snippet h2_with_attributes
 abbr    <h2 ...>...</h2>
 options word
-	<h2 ${1:#:attributes}>${0}</h2>
+regexp  '<[h2_with_attributes]*'
+	h2 ${1:#:attributes}>${0}</h2>
 
 snippet h3
 abbr    <h3>...</h3>
 options word
-	<h3>${0}</h3>
+regexp  '<[h3]*'
+	h3>${0}</h3>
 
 snippet h3_with_attributes
 abbr    <h3 ...>...</h3>
 options word
-	<h3 ${1:#:attributes}>${0}</h3>
+regexp  '<[h3_with_attributes]*'
+	h3 ${1:#:attributes}>${0}</h3>
 
 snippet h4
 abbr    <h4>...</h4>
 options word
-	<h4>${0}</h4>
+regexp  '<[h4]*'
+	h4>${0}</h4>
 
 snippet h4_with_attributes
 abbr    <h4 ...>...</h4>
 options word
-	<h4 ${1:#:attributes}>${0}</h4>
+regexp  '<[h4_with_attributes]*'
+	h4 ${1:#:attributes}>${0}</h4>
 
 snippet h5
 abbr    <h5>...</h5>
 options word
-	<h5>${0}</h5>
+regexp  '<[h5]*'
+	h5>${0}</h5>
 
 snippet h5_with_attributes
 abbr    <h5 ...>...</h5>
 options word
-	<h5 ${1:#:attributes}>${0}</h5>
+regexp  '<[h5_with_attributes]*'
+	h5 ${1:#:attributes}>${0}</h5>
 
 snippet h6
 abbr    <h6>...</h6>
 options word
-	<h6>${0}</h6>
+regexp  '<[h6]*'
+	h6>${0}</h6>
 
 snippet h6_with_attributes
 abbr    <h6 ...>...</h6>
 options word
-	<h6 ${1:#:attributes}>${0}</h6>
+regexp  '<[h6_with_attributes]*'
+	h6 ${1:#:attributes}>${0}</h6>
 # }}}
 
 snippet script
 abbr    <script>\n ...\n </script>
-options head
-	<script>
+options word
+regexp  '<[script]*'
+	script>
 		${0}
 	</script>
 
 snippet script_charset
 abbr    <script charset="utf-8">\n ...\n </script>
-options head
-	<script charset="utf-8">
+options word
+regexp  '<[script_charset]*'
+	script charset="utf-8">
 		${0}
 	</script>
 
 snippet script_src
 abbr    <script src="{source}"></script>
-options head
-	<script src="${1:#:source}"></script>
+options word
+regexp  '<[script_src]*'
+	script src="${1:#:source}"></script>
 
 snippet div
 abbr    <div>\n ...\n </div>
-options head
-	<div>
+options word
+regexp  '<[div]*'
+	div>
 		${0}
 	</div>
 
 snippet div_with_attributes
 abbr    <div ...>\n ...\n </div>
-options head
-	<div ${1:#:attributes}>
+options word
+regexp  '<[div_with_attributes]*'
+	div ${1:#:attributes}>
 		${0}
 	</div>
 
 snippet span
 abbr    <span>...</span>
 options word
-	<span>${0}</span>
+regexp  '<[span]*'
+	span>${0}</span>
 
 snippet span_with_attributes
 abbr    <span ...>...</span>
 options word
-	<span ${1:#:attributes}>${0}</span>
+regexp  '<[span_with_attributes]*'
+	span ${1:#:attributes}>${0}</span>
 
 snippet q
 abbr    <q>...</q>
 options word
-	<q>${0}</q>
+regexp  '<[q]*'
+	q>${0}</q>
