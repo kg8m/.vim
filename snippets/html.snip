@@ -1,3 +1,4 @@
+# Character Reference  {{{
 snippet amp
 abbr    &amp; (&)
 regexp  '\&[amp]*'
@@ -31,7 +32,9 @@ snippet &<
 abbr    &lt; (<)
 options word
 	&lt;
+# }}}
 
+# Base  {{{
 snippet comment
 alias   <!--
 abbr    <!-- {comment} -->
@@ -47,6 +50,41 @@ snippet br
 abbr    <br />
 options word
 	<br />
+
+snippet div
+abbr    <div>\n ...\n </div>
+options word
+regexp  '<[div]*'
+	div>
+		${0}
+	</div>
+
+snippet div_with_attributes
+abbr    <div ...>\n ...\n </div>
+options word
+regexp  '<[div_with_attributes]*'
+	div ${1:#:attributes}>
+		${0}
+	</div>
+
+snippet span
+abbr    <span>...</span>
+options word
+regexp  '<[span]*'
+	span>${0}</span>
+
+snippet span_with_attributes
+abbr    <span ...>...</span>
+options word
+regexp  '<[span_with_attributes]*'
+	span ${1:#:attributes}>${0}</span>
+
+snippet q
+abbr    <q>...</q>
+options word
+regexp  '<[q]*'
+	q>${0}</q>
+# }}}
 
 # Headers  {{{
 snippet h1
@@ -122,6 +160,7 @@ regexp  '<[h6_with_attributes]*'
 	h6 ${1:#:attributes}>${0}</h6>
 # }}}
 
+# Script  {{{
 snippet script
 abbr    <script>\n ...\n </script>
 options word
@@ -143,37 +182,4 @@ abbr    <script src="{source}"></script>
 options word
 regexp  '<[script_src]*'
 	script src="${1:#:source}"></script>
-
-snippet div
-abbr    <div>\n ...\n </div>
-options word
-regexp  '<[div]*'
-	div>
-		${0}
-	</div>
-
-snippet div_with_attributes
-abbr    <div ...>\n ...\n </div>
-options word
-regexp  '<[div_with_attributes]*'
-	div ${1:#:attributes}>
-		${0}
-	</div>
-
-snippet span
-abbr    <span>...</span>
-options word
-regexp  '<[span]*'
-	span>${0}</span>
-
-snippet span_with_attributes
-abbr    <span ...>...</span>
-options word
-regexp  '<[span_with_attributes]*'
-	span ${1:#:attributes}>${0}</span>
-
-snippet q
-abbr    <q>...</q>
-options word
-regexp  '<[q]*'
-	q>${0}</q>
+# }}}
