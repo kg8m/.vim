@@ -117,11 +117,36 @@ regexp  '<[p_with_attributes]*'
 		${0}
 	</p>
 
+snippet cite
+abbr    <cite>...</cite>
+options word
+regexp  '<[cite]*'
+	cite>${0}</cite>
+
 snippet q
 abbr    <q>...</q>
 options word
 regexp  '<[q]*'
 	q>${0}</q>
+
+snippet strong
+abbr    <strong>...</strong>
+options word
+regexp  '<[strong]*'
+	strong>${0}</strong>
+
+# Details, Summary  {{{
+snippet details_summary
+alias   summary_details
+abbr    <details><summary>...</summary> ... </details>
+options word
+	<details>
+		<summary>
+			<strong>${1:#:summary}</strong>
+		</summary>
+		
+		${2:#:details}
+	</details>
 # }}}
 
 # Headers  {{{
@@ -360,4 +385,12 @@ regexp  '<[td_with_attributes]*'
 	td ${1:#:attributes}>
 		${0}
 	</td>
+# }}}
+
+# Form  {{{
+snippet label
+abbr    <label>...</label>
+options word
+regexp  '<[label]*'
+	label>${0}</label>
 # }}}
