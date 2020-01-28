@@ -49,3 +49,18 @@ options head
 	\`\`\`${1:#:language}
 	${0}
 	\`\`\`
+
+snippet details_summary_for_markdown
+alias   summary_details_for_markdown
+abbr    <details><summary>...<br /><br /></summary> ... </details>
+options word
+	<details>
+	<summary>
+	<strong>${1:#:summary}</strong>
+	</summary>
+	
+	<br />
+	
+	${2:#:details}
+	
+	</details>
