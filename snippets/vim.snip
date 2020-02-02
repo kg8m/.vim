@@ -64,3 +64,19 @@ options head
 	for ${1} in ${2}
 		${0}
 	endfor
+
+snippet try_catch
+abbr    try\n ...\ncatch /.../\n ...\n endtry
+options head
+	try
+		${0}
+	catch /${1:.*}/
+	endtry
+
+snippet try_finally
+abbr    try\n ...\nfinally\n ...\n endtry
+options head
+	try
+		${0}
+	finally
+	endtry
