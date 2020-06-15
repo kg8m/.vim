@@ -72,6 +72,36 @@ options head
 		${0}
 	}
 
+snippet try_catch
+alias   try
+abbr    try {\n ...\n }\n catch (error) {\n ... }
+options head
+	try {
+		${0}
+	}
+	catch (error) {
+	}
+
+snippet try_catch_finally
+abbr    try {\n ...\n }\n catch (error) {\n ... }\n finally {\n ... }
+options head
+	try {
+		${0}
+	}
+	catch (error) {
+	}
+	finally {
+	}
+
+snippet try_finally
+abbr    try {\n ...\n }\n finally {\n ... }
+options head
+	try {
+		${0}
+	}
+	finally {
+	}
+
 snippet setTimeout
 abbr    setTimeout(function() {\n ...\n }, {timeout})
 options word
