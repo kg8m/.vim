@@ -72,6 +72,20 @@ options head
 		${0}
 	}
 
+snippet for_of
+abbr    for (const item of array) { ... }
+options head
+	for (const ${1:item} of ${2:array}) {
+		${0}
+	}
+
+snippet for_in
+abbr    for (const prop in object) { ... }
+options head
+	for (const ${1:prop} in ${2:object}) {
+		${0}
+	}
+
 snippet try_catch
 alias   try
 abbr    try {\n ...\n }\n catch (error) {\n ... }
