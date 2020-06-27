@@ -81,7 +81,7 @@ function! kg8m#plugin#update_all() abort  " {{{
     \   . '\ !\\ *master\\ *->\\ origin/master'
     \   . '\ !^First,\\ rewinding\\ head\\ to\\ replay\\ your\\ work\\ on\\ top\\ of\\ it'
     \   . '\ !^Fast-forwarded\\ master\\ to'
-    \   . '\ !^From\\ https://'
+    \   . '\ !^(.*/.*)\\ From\\ '
     \   . '\ !Successfully\\ rebased\\ and\\ updated\\ refs/heads/master.'
 
   execute "Unite dein/log -buffer-name=update_plugins -input=" . initial_input
