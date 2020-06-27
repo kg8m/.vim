@@ -16,7 +16,7 @@ function! kg8m#plugin#lsp#register(config) abort  " {{{
     endif
 
     let s:configs   += [a:config]
-    let s:filetypes += a:config.whitelist
+    let s:filetypes += has_key(a:config, "allowlist") ? a:config.allowlist : a:config.whitelist
 
     call add(s:registered, #{ name: a:config.name, available: v:true })
   else
