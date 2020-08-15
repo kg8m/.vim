@@ -10,7 +10,8 @@ function! kg8m#plugin#init_manager(plugins_dirpath) abort  " {{{
   let &runtimepath .= "," . manager_path
   let result = dein#begin(plugins_path)
 
-  augroup my_vimrc  " {{{
+  augroup kg8m-plugin  " {{{
+    autocmd!
     autocmd VimEnter * call s:call_hooks()
   augroup END  " }}}
 
