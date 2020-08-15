@@ -8,14 +8,14 @@ function! kg8m#plugin#init_manager(plugins_dirpath) abort  " {{{
   endif
 
   let &runtimepath .= "," . manager_path
-
-  return dein#begin(plugins_path)
+  let result = dein#begin(plugins_path)
 
   augroup my_vimrc  " {{{
     autocmd VimEnter * call s:call_hooks()
   augroup END  " }}}
 
   call kg8m#plugin#register(manager_path)
+  return result
 endfunction  " }}}
 
 function! kg8m#plugin#finish_setup() abort  " {{{
