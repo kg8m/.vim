@@ -34,22 +34,6 @@ options head
 	
 	${0}
 
-snippet code_block
-alias   ```
-abbr    ```\n {text}\n ```
-options head
-	\`\`\`
-	${0}
-	\`\`\`
-
-snippet code_block_with_language
-alias   ````
-abbr    ```{language}\n {text}\n ```
-options head
-	\`\`\`${1:#:language}
-	${0}
-	\`\`\`
-
 snippet details_summary_for_markdown
 alias   summary_details_for_markdown
 abbr    <details><summary>...<br /><br /></summary> ... </details>
