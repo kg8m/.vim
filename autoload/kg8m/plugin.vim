@@ -15,6 +15,8 @@ function! kg8m#plugin#init_manager(plugins_dirpath) abort  " {{{
     autocmd VimEnter * call kg8m#plugin#call_hooks()
   augroup END  " }}}
 
+  let g:dein#install_github_api_token = $DEIN_INSTALL_GITHUB_API_TOKEN
+
   call kg8m#plugin#register(manager_path)
   return result
 endfunction  " }}}
@@ -72,19 +74,33 @@ function! kg8m#plugin#install(...) abort  " {{{
 endfunction  " }}}
 
 function! kg8m#plugin#update_all() abort  " {{{
-  " Remove disused plugins
-  call timer_start(200, { -> map(dein#check_clean(), "delete(v:val, 'rf')") })
+  call timer_start(200, { -> kg8m#plugin#remove_disused() })
 
-  call dein#update()
+  echo "Check and update plugins..."
+  silent call kg8m#plugin#check_and_update()
 
+  call timer_start(1000, { -> kg8m#plugin#show_update_log() })
+endfunction  " }}}
+
+function! kg8m#plugin#remove_disused() abort  " {{{
+  call map(dein#check_clean(), "delete(v:val, 'rf')")
+endfunction  " }}}
+
+function! kg8m#plugin#check_and_update() abort  " {{{
+  let force_update = v:true
+  call dein#check_update(force_update)
+endfunction  " }}}
+
+function! kg8m#plugin#show_update_log() abort  " {{{
   let initial_input = '!Same\\ revision'
     \   . '\ !Current\\ branch\\ master\\ is\\ up\\ to\\ date.'
     \   . '\ !^$'
     \   . '\ !(*/*)\\ [+'
+    \   . '\ !(*/*)\\ [-'
     \   . '\ !Created\\ autostash'
     \   . '\ !Applied\\ autostash'
     \   . '\ !HEAD\\ is\\ now'
-    \   . '\ !\\ *master\\ *->\\ origin/master'
+    \   . '\ !\\ *->\\ origin/'
     \   . '\ !^First,\\ rewinding\\ head\\ to\\ replay\\ your\\ work\\ on\\ top\\ of\\ it'
     \   . '\ !^Fast-forwarded\\ master\\ to'
     \   . '\ !^(.*/.*)\\ From\\ '
