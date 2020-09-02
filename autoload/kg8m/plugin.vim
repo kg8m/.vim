@@ -12,11 +12,16 @@ function! kg8m#plugin#init_manager(plugins_dirpath) abort  " {{{
 
   augroup kg8m-plugin  " {{{
     autocmd!
-    autocmd VimEnter * call s:call_hooks()
+    autocmd VimEnter * call kg8m#plugin#call_hooks()
   augroup END  " }}}
 
   call kg8m#plugin#register(manager_path)
   return result
+endfunction  " }}}
+
+function! kg8m#plugin#call_hooks() abort  " {{{
+  call dein#call_hook("source")
+  call dein#call_hook("post_source")
 endfunction  " }}}
 
 function! kg8m#plugin#finish_setup() abort  " {{{
@@ -93,9 +98,4 @@ endfunction  " }}}
 
 function! kg8m#plugin#is_sourced(plugin_name) abort  " {{{
   return dein#is_sourced(a:plugin_name)
-endfunction  " }}}
-
-function! s:call_hooks() abort  " {{{
-  call dein#call_hook("source")
-  call dein#call_hook("post_source")
 endfunction  " }}}
